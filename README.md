@@ -4,7 +4,7 @@
 * Xây dựng front-end 
 * Xây dựng back-end sử dụng Lambda
 * Database: DynamoDB
-* Sử dụng cache dữ liệu bằng Redis"
+* Sử dụng cache dữ liệu bằng Redis
 
 
 
