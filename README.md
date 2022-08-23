@@ -1,4 +1,4 @@
-# Xây dựng ứng dụng quản lý thông tin sinh viên sử dụng dịch vụ serverless của AWS
+# Xây dựng ứng dụng quản lý thông tin sinh viên sử dụng dịch vụ severless của AWS
 
 ## Các nội dung chính
 * Xây dựng front-end 
