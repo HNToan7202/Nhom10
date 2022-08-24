@@ -9,7 +9,7 @@
 
 
 ## Công nghệ sử dụng 
-*Lamda Severless của AWS
+* Lamda Severless của AWS
 * Database: DynamonDB
 * Cache dữ liệu bằng Redis
 ## Các thành viên trong nhóm
