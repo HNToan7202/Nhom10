@@ -2,7 +2,7 @@
 
 ## Các service có thể sử dụng :
 * Client: Html, Css3, Bootstrap, JS
-* Server: AWS Lambda, AWS EC2,AWS Amplify,Amazon Cognito
+* Server: AWS Lambda, AWS EC2,AWS Amplify,Amazon Cognito, API Gateway
 * Database: DynamoDB
 
 ## Các thành viên trong nhóm
