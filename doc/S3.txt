@@ -1,0 +1,15 @@
+giống gg drive
+tính phí
+ upload data:
+tạo bucket trong vùng của AWS
+Interface, console
+tính tiền theo lưu trữ : bao nhiêu GB trên tháng 
+Đưa dữ liệu ra ngoài, các
+
+upload data lên ko tính phí
+S3 tiêu chuẩn 
+tính chắc chắn : 11 số 9
+tính sẳn sàng 4 số 9
+S3 Standard-infrequent : 
+11 số 9 
+3 số 9 
