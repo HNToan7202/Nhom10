@@ -19,5 +19,5 @@ public interface IGradeService {
 
 	boolean containSubjectGroup(String subjectGroupId);
 
-	ArrayList<Grade> retrieveGradeByLectureId(String lectureId);
+	/* ArrayList<Grade> retrieveGradeByLectureId(String lectureId); */
 }

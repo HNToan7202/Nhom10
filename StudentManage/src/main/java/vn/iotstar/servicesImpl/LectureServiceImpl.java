@@ -30,15 +30,13 @@ public class LectureServiceImpl implements ILectureService {
 		return LectureRepository.getInstance().delete(hashKey, rangeKey);
 	}
 
-	@Override
-	public Lecture retrieveById(String hashKey, String rangeKey) {
-		return LectureRepository.getInstance().retrieveById(hashKey, rangeKey);
-	}
-
-	@Override
-	public ArrayList<Lecture> retrieveAll() {
-		return LectureRepository.getInstance().retrieveAll();
-	}
+	/*
+	 * @Override public Lecture retrieveById(String hashKey, String rangeKey) {
+	 * return LectureRepository.getInstance().retrieveById(hashKey, rangeKey); }
+	 * 
+	 * @Override public ArrayList<Lecture> retrieveAll() { return
+	 * LectureRepository.getInstance().retrieveAll(); }
+	 */
 
 	@Override
 	public boolean containLectureBelongFaculty(String facultyId) {

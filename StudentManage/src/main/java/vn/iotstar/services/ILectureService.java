@@ -11,9 +11,11 @@ public interface ILectureService {
 
 	boolean delete(String hashKey, String rangeKey);
 
-	Lecture retrieveById(String hashKey, String rangeKey);
-
-	ArrayList<Lecture> retrieveAll();
+	/*
+	 * Lecture retrieveById(String hashKey, String rangeKey);
+	 * 
+	 * ArrayList<Lecture> retrieveAll();
+	 */
 
 	boolean containLectureBelongFaculty(String facultyId);
 }

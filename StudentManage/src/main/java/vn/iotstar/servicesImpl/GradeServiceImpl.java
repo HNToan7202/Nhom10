@@ -50,8 +50,8 @@ public class GradeServiceImpl implements IGradeService {
 		return GradeRepository.getInstance().containSubjectGroup(subjectGroupId);
 	}
 
-	@Override
-	public ArrayList<Grade> retrieveGradeByLectureId(String lectureId) {
-		return GradeRepository.getInstance().retrieveGradeByLectureId(lectureId);
-	}
+	/*
+	 * @Override public ArrayList<Grade> retrieveGradeByLectureId(String lectureId)
+	 * { return GradeRepository.getInstance().retrieveGradeByLectureId(lectureId); }
+	 */
 }

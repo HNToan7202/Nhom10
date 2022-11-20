@@ -112,93 +112,71 @@ public class LectureRepository implements ILectureRepository{
         }
         return true;
     }
-    private Lecture getLectureViewModel(String lectureId, String facultyId, String lectureName,
-                                                 String dob, String address, String gender, String phone, String image, String deleted){
-    	Lecture lecture = new Lecture();
 
-        lecture.setLectureId(lectureId);
-        lecture.setLectureName(lectureName);
-        lecture.setFacultyId(facultyId);
-        lecture.setAddress(address);
-        lecture.setGender(gender);
-        lecture.setPhone(phone);
-        lecture.setDob(dob);
-        lecture.setDeleted(Integer.parseInt(deleted));
-        Faculty faculty = FacultyRepository.getInstance().retrieveById(facultyId,"");
-        lecture.setFacultyName(faculty.getFacultyName());
-
-        ArrayList<User> users = UserRepository.getInstance().retrieveAll();
-        for(User u:users){
-            if(Objects.equals(u.getLectureId(), lectureId)){
-                lecture.setUsername(u.getUsername());
-                lecture.setPassword(u.getPassword());
-                break;
-            }
-        }
-        ArrayList<UserRoleViewModel> userRoles = UserRoleRepository.getInstance().retrieveAll();
-        ArrayList<String> roleIds = new ArrayList<>();
-        for(UserRoleViewModel u:userRoles){
-            if(Objects.equals(u.getUsername(), lecture.getUsername())){
-                roleIds.add(u.getRoleId());
-            }
-        }
-        lecture.setImage(image);
-        lecture.setRoleIds(roleIds);
-        return lecture;
-    }
-    @Override
-    public Lecture retrieveById(String hashKey, String rangeKey) {
-        Table table = AWSDynamoDB.getInstance().getDynamoDB().getTable(tableName);
-        Item item = null;
-        try {
-
-            item = table.getItem("lectureId", hashKey, "lectureId, facultyId, lectureName, dob, address, gender, phone, image, deleted", null);
-
-        }
-        catch (Exception e) {
-            return null;
-        }
-        return getLectureViewModel(item.getString("lectureId"),
-                item.getString("facultyId"),
-                item.getString("lectureName"),
-                item.getString("dob"),
-                item.getString("address"),
-                item.getString("gender"),
-                item.getString("phone"),
-                item.getString("image"),
-                item.getString("deleted"));
-    }
-
-    @Override
-    public ArrayList<Lecture> retrieveAll() {
-        ArrayList<Lecture> lectures = new ArrayList<>();
-        try{
-            ScanRequest scanRequest = new ScanRequest()
-                    .withTableName(tableName)
-                    .withAttributesToGet("lectureId", "facultyId", "lectureName", "dob", "address", "gender", "phone", "image", "deleted");
-
-            ScanResult result = AWSDynamoDB.getInstance().getAmazonClient().scan(scanRequest);
-            for (Map<String, AttributeValue> item : result.getItems()){
-
-                AttributeValue lectureId = item.getOrDefault("lectureId", new AttributeValue());
-                AttributeValue facultyId = item.getOrDefault("facultyId", new AttributeValue());
-                AttributeValue lectureName = item.getOrDefault("lectureName", new AttributeValue());
-                AttributeValue dob = item.getOrDefault("dob", new AttributeValue());
-                AttributeValue address = item.getOrDefault("address", new AttributeValue());
-                AttributeValue gender = item.getOrDefault("gender", new AttributeValue());
-                AttributeValue phone = item.getOrDefault("phone", new AttributeValue());
-                AttributeValue image = item.getOrDefault("image", new AttributeValue());
-                AttributeValue deleted = item.getOrDefault("deleted", new AttributeValue());
-
-                lectures.add(getLectureViewModel(lectureId.getS(), facultyId.getS(), lectureName.getS(), dob.getS()
-                        , address.getS(), gender.getS(), phone.getS(), image.getS(), deleted.getS()));
-            }
-
-        }catch(Exception e){
-            return null;
-        }
-        return lectures;
-    }
+	/*
+	 * private Lecture getLectureViewModel(String lectureId, String facultyId,
+	 * String lectureName, String dob, String address, String gender, String phone,
+	 * String image, String deleted){ Lecture lecture = new Lecture();
+	 * 
+	 * lecture.setLectureId(lectureId); lecture.setLectureName(lectureName);
+	 * lecture.setFacultyId(facultyId); lecture.setAddress(address);
+	 * lecture.setGender(gender); lecture.setPhone(phone); lecture.setDob(dob);
+	 * lecture.setDeleted(Integer.parseInt(deleted)); Faculty faculty =
+	 * FacultyRepository.getInstance().retrieveById(facultyId,"");
+	 * lecture.setFacultyName(faculty.getFacultyName());
+	 * 
+	 * ArrayList<User> users = UserRepository.getInstance().retrieveAll(); for(User
+	 * u:users){ if(Objects.equals(u.getLectureId(), lectureId)){
+	 * lecture.setUsername(u.getUsername()); lecture.setPassword(u.getPassword());
+	 * break; } } ArrayList<UserRoleViewModel> userRoles =
+	 * UserRoleRepository.getInstance().retrieveAll(); ArrayList<String> roleIds =
+	 * new ArrayList<>(); for(UserRoleViewModel u:userRoles){
+	 * if(Objects.equals(u.getUsername(), lecture.getUsername())){
+	 * roleIds.add(u.getRoleId()); } } lecture.setImage(image);
+	 * lecture.setRoleIds(roleIds); return lecture; }
+	 */
+	/*
+	 * @Override public Lecture retrieveById(String hashKey, String rangeKey) {
+	 * Table table = AWSDynamoDB.getInstance().getDynamoDB().getTable(tableName);
+	 * Item item = null; try {
+	 * 
+	 * item = table.getItem("lectureId", hashKey,
+	 * "lectureId, facultyId, lectureName, dob, address, gender, phone, image, deleted"
+	 * , null);
+	 * 
+	 * } catch (Exception e) { return null; } return
+	 * getLectureViewModel(item.getString("lectureId"), item.getString("facultyId"),
+	 * item.getString("lectureName"), item.getString("dob"),
+	 * item.getString("address"), item.getString("gender"), item.getString("phone"),
+	 * item.getString("image"), item.getString("deleted")); }
+	 * 
+	 * @Override public ArrayList<Lecture> retrieveAll() { ArrayList<Lecture>
+	 * lectures = new ArrayList<>(); try{ ScanRequest scanRequest = new
+	 * ScanRequest() .withTableName(tableName) .withAttributesToGet("lectureId",
+	 * "facultyId", "lectureName", "dob", "address", "gender", "phone", "image",
+	 * "deleted");
+	 * 
+	 * ScanResult result =
+	 * AWSDynamoDB.getInstance().getAmazonClient().scan(scanRequest); for
+	 * (Map<String, AttributeValue> item : result.getItems()){
+	 * 
+	 * AttributeValue lectureId = item.getOrDefault("lectureId", new
+	 * AttributeValue()); AttributeValue facultyId = item.getOrDefault("facultyId",
+	 * new AttributeValue()); AttributeValue lectureName =
+	 * item.getOrDefault("lectureName", new AttributeValue()); AttributeValue dob =
+	 * item.getOrDefault("dob", new AttributeValue()); AttributeValue address =
+	 * item.getOrDefault("address", new AttributeValue()); AttributeValue gender =
+	 * item.getOrDefault("gender", new AttributeValue()); AttributeValue phone =
+	 * item.getOrDefault("phone", new AttributeValue()); AttributeValue image =
+	 * item.getOrDefault("image", new AttributeValue()); AttributeValue deleted =
+	 * item.getOrDefault("deleted", new AttributeValue());
+	 * 
+	 * lectures.add(getLectureViewModel(lectureId.getS(), facultyId.getS(),
+	 * lectureName.getS(), dob.getS() , address.getS(), gender.getS(), phone.getS(),
+	 * image.getS(), deleted.getS())); }
+	 * 
+	 * }catch(Exception e){ return null; } return lectures; }
+	 */
 
     @Override
     public boolean containLectureBelongFaculty(String facultyId) {
