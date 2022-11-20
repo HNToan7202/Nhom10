@@ -32,16 +32,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<<<<<<< HEAD:StudentManage/pom.xml
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sqs -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>1.12.345</version>
 		</dependency>
-=======
-	
->>>>>>> aefb8cd74b567437a7ee246f0a40fd6cf0e8e0f1:pom.xml
+
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
