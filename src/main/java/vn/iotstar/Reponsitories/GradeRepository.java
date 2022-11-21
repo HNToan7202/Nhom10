@@ -19,7 +19,7 @@ import java.util.Map;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 
 @Repository
- @EnableScan 
+@EnableScan 
 public class GradeRepository {
 	private final String tableName = "grade";
 	

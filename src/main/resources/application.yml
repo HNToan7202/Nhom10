@@ -1,0 +1,11 @@
+cloud:
+  aws:
+    region:
+      static: us-east-1
+      auto: false
+    credentials:
+      access-key: ASIAZIOSPG76MPPBICO6
+      secret-key: qy6CcWO3c/jHSVfPtG7S5D7DAuaFFbw+0/20KoEM
+    end-point: 
+      uri: https://sqs.us-east-1.amazonaws.com/636633430012/gradeSQS
+      
