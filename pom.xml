@@ -32,20 +32,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sqs -->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-sqs</artifactId>
-			<version>1.12.345</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-aws-messaging -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-messaging</artifactId>
-			<version>2.0.0.RELEASE</version>
-		</dependency>
+	
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -93,7 +80,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				
 				<configuration>
 					<excludes>
 						<exclude>
@@ -101,16 +87,6 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<classpathDependencyExcludes>
-						<classpathDependencyExcludes>org.springframework.cloud:spring-cloud-aws-autoconfigure</classpathDependencyExcludes>
-					</classpathDependencyExcludes>
 				</configuration>
 			</plugin>
 		</plugins>

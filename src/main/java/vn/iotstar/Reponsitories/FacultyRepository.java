@@ -24,7 +24,7 @@ import vn.iotstar.database.AWSDynamoDB;
 public class FacultyRepository {
 	private final String tableName = "faculty";
 
-	@Autowired  //Đưa đối tượng
+	@Autowired
 	private DynamoDBMapper dynamoDBMapper;
 
 	public Faculty saveFaculty(Faculty faculty) {
