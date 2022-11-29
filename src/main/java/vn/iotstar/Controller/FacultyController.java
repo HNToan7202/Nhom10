@@ -1,39 +1,32 @@
 package vn.iotstar.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import vn.iotstar.Entity.Faculty;
 import vn.iotstar.Reponsitories.FacultyRepository;
+import vn.iotstar.dto.FacultyRequest;
 
-
-
-//@RestController  // =  @Controller + @ResponeBody
-
-
-//@RequestMapping("/faculty")
-@Controller
+@RestController
 @RequestMapping("/faculty")
 public class FacultyController {
 	@Autowired
 	private FacultyRepository facultyRepo;
 
-	//@PostMapping(value = "/faculty")  // @RequestMapping + method
-	public 	String createFaculty() {
-		
-		//model.addAttribute("faculty",new Faculty());
-		//return "/faculty/addOrEdit";
-		return "index";
+	@GetMapping
+	public List<Faculty> getAllGrade(){
+		return facultyRepo.findAll();
 	}
-//	@PutMapping(value = "/faculty")
-//	public Faculty updateFaculty(@RequestBody Faculty model)
-//	{
-//		return model;
-//	}
-//	@DeleteMapping(value = "/faculty")
-//	public void deleteFaculty(@RequestBody long[] model)
-//	{
-//		
-//	}
+	
+	@PostMapping("/faculty/add")
+	public Faculty addFaculty(@RequestBody FacultyRequest facultyRequest) {
+		return facultyRepo.saveFaculty(new Faculty(facultyRequest.facultyName(), facultyRequest.image(), facultyRequest.deleted()));
+	}
 
 }
