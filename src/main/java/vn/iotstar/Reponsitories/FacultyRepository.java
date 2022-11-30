@@ -15,10 +15,8 @@ import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
+import vn.iotstar.Config.AWSDynamoDB;
 import vn.iotstar.Entity.Faculty;
-import vn.iotstar.Entity.Grade;
-import vn.iotstar.database.AWSDynamoDB;
-
 @Repository
 @EnableScan
 public class FacultyRepository {
@@ -39,38 +37,36 @@ public class FacultyRepository {
 	public List<Faculty> findAll() {
 		List<Faculty> faculties = new ArrayList<>();
 		Faculty faculty = new Faculty();
-        try{
-            ScanRequest scanRequest = new ScanRequest()
-                .withTableName(tableName)
-                    .withAttributesToGet("facultyId", "facultyName", "image" , "deleted");
+		try {
+			ScanRequest scanRequest = new ScanRequest()
+					.withTableName(tableName)
+					.withAttributesToGet("id","name","deleted");
 
-            ScanResult result = AWSDynamoDB.getInstance().getAmazonClient().scan(scanRequest);
-            for (Map<String, AttributeValue> item : result.getItems()){
-                AttributeValue facultyId = item.getOrDefault("facultyId", new AttributeValue());
-                AttributeValue facultyName = item.getOrDefault("facultyName", new AttributeValue());
-                AttributeValue image = item.getOrDefault("image", new AttributeValue());
-                AttributeValue deleted = item.getOrDefault("deleted", new AttributeValue());
-                faculty.setFacultyId(facultyId.getS());
-                faculty.setFacultyName(facultyName.getS());
-                faculty.setImage(image.getS());
-                faculty.setDeleted(Integer.parseInt(deleted.getN()));
-                faculties.add(faculty);
-               }
+			ScanResult result = AWSDynamoDB.getInstance().getAmazonClient().scan(scanRequest);
+			for (Map<String, AttributeValue> item : result.getItems()) {
+				AttributeValue facultyId = item.getOrDefault("id", new AttributeValue());
+				AttributeValue facultyName = item.getOrDefault("name", new AttributeValue());
+				AttributeValue deleted = item.getOrDefault("deleted", new AttributeValue());
+				faculty.setId(Integer.parseInt(facultyId.getN()));
+				faculty.setName(facultyName.getS());
+				faculty.setDeleted(Integer.parseInt(deleted.getN()));
+				faculties.add(faculty);
+			}
 
-        }catch(Exception e){
-            return null;
-        }
-        return faculties;
+		} catch (Exception e) {
+			return null;
+		}
+		return faculties;
 	}
 
-	public String deleteFacultyById(String studentId) {
-		dynamoDBMapper.delete(dynamoDBMapper.load(Grade.class, studentId));
-		return "StudentId : " + studentId + " Deleted!";
+	public String deleteFacultyById(String facultyId) {
+		dynamoDBMapper.delete(dynamoDBMapper.load(Faculty.class, facultyId));
+		return "StudentId : " + facultyId + " Deleted!";
 	}
 
-	public String updateFaculty(String studentId, Grade grade) {
-		dynamoDBMapper.save(grade, new DynamoDBSaveExpression().withExpectedEntry("studentId",
-				new ExpectedAttributeValue(new AttributeValue().withS(studentId))));
-		return studentId;
+	public String updateFaculty(String facultyId, Faculty faculty) {
+		dynamoDBMapper.save(faculty, new DynamoDBSaveExpression().withExpectedEntry("id",
+				new ExpectedAttributeValue(new AttributeValue().withS(facultyId))));
+		return facultyId;
 	}
 }

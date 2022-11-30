@@ -1,40 +1,34 @@
 package vn.iotstar.Entity;
 
+import java.io.Serializable;
 
-public class User {
+import javax.persistence.Entity;
+
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@SuppressWarnings("serial")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder // Viết method nối chuỗi
+@Data
+@Entity // tạo ra get set
+@DynamoDBTable(tableName = "user")
+public class User implements Serializable{
+	
+	@DynamoDBHashKey
     private String username;
+	@DynamoDBAttribute	
     private String password;
-    private String lectureId;
+	@DynamoDBAttribute
+    private String roleid;
+	@DynamoDBAttribute
     private int deleted;
 
-    public int getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(int deleted) {
-        this.deleted = deleted;
-    }
-    public String getLectureId() {
-        return lectureId;
-    }
-
-    public void setLectureId(String lectureId) {
-        this.lectureId = lectureId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
