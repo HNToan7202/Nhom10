@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
-@Builder // Viết method nối chuỗi
 @Data
 @Entity // tạo ra get set
 @DynamoDBTable(tableName = "student")
@@ -26,7 +25,8 @@ public class Student implements Serializable {
 	private String id;
 	@DynamoDBAttribute
 	private String mssv;
-
+	@DynamoDBAttribute
+	private String username;
 	@DynamoDBAttribute
 	private String studentClassId;
 	@DynamoDBAttribute
@@ -45,72 +45,95 @@ public class Student implements Serializable {
 	private int deleted;
 	@DynamoDBAttribute
 	private String facultyId;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getMssv() {
 		return mssv;
 	}
+
 	public void setMssv(String mssv) {
 		this.mssv = mssv;
 	}
+
 	public String getStudentClassId() {
 		return studentClassId;
 	}
+
 	public void setStudentClassId(String studentClassId) {
 		this.studentClassId = studentClassId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDob() {
 		return dob;
 	}
+
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
+
 	public String getImage() {
 		return image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public int getDeleted() {
 		return deleted;
 	}
+
 	public void setDeleted(int deleted) {
 		this.deleted = deleted;
 	}
+
 	public String getFacultyId() {
 		return facultyId;
 	}
+
 	public void setFacultyId(String facultyId) {
 		this.facultyId = facultyId;
 	}
+
 	public Student(String id, String mssv, String studentClassId, String name, String dob, String image, String address,
 			String gender, String phone, int deleted, String facultyId) {
 		super();
@@ -126,9 +149,9 @@ public class Student implements Serializable {
 		this.deleted = deleted;
 		this.facultyId = facultyId;
 	}
+
 	public Student() {
 		super();
 	}
-	
-	
+
 }
