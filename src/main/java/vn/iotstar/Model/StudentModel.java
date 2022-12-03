@@ -1,7 +1,12 @@
 package vn.iotstar.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class StudentModel {
+
+	private String id;
 	private String mssv;
+	private String username;
 	private String studentClassId;
 	private String studentClassName;
 	private String name;
@@ -13,6 +18,7 @@ public class StudentModel {
 	private String image;
 	private String facultyId;
 	private String facultyName;
+	private MultipartFile imageFile;
 	private Boolean isEdit = false;
 
 	public String getMssv() {
@@ -117,6 +123,30 @@ public class StudentModel {
 
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
+	}
+
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

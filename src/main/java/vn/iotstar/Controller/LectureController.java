@@ -29,47 +29,47 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Config.AWSS3;
-import vn.iotstar.Entity.Student;
-import vn.iotstar.Model.StudentModel;
-import vn.iotstar.Service.IStudentService;
+import vn.iotstar.Entity.Lecture;
+import vn.iotstar.Model.LectureModel;
+import vn.iotstar.Service.ILectureService;
 
 @Controller
-@RequestMapping("admin/student")
-public class StudentController {
+@RequestMapping("admin/lecture")
+public class LectureController {
 	@Autowired
-	IStudentService studentservice;
+	ILectureService lectureservice;
 
 	@Autowired
 	ServletContext application;
 
 	@GetMapping("")
 	public String getAllGrade(ModelMap model) {
-		Iterable<Student> students = studentservice.findAll();
-		model.addAttribute("students", students);
-		return "admin/student/list";
+		Iterable<Lecture> lectures = lectureservice.findAll();
+		model.addAttribute("lectures", lectures);
+		return "admin/lecture/list";
 	}
 
 	@GetMapping("add")
 	public String add(Model model) {
-		StudentModel student = new StudentModel();
-		student.setIsEdit(false);
-		model.addAttribute("student", student);
-		return "admin/student/addOrEdit";
+		LectureModel lecture = new LectureModel();
+		lecture.setIsEdit(false);
+		model.addAttribute("lecture", lecture);
+		return "admin/lecture/addOrEdit";
 	}
 
 	@GetMapping("edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
-		Optional<Student> opt = studentservice.findById(id);
-		StudentModel student = new StudentModel();
+		Optional<Lecture> opt = lectureservice.findById(id);
+		LectureModel lecture = new LectureModel();
 		if (opt.isPresent()) {
-			Student entity = opt.get();
-			BeanUtils.copyProperties(entity, student);
-			student.setIsEdit(true);
-			model.addAttribute("student", student);
-			return new ModelAndView("admin/student/addOrEdit", model);
+			Lecture entity = opt.get();
+			BeanUtils.copyProperties(entity, lecture);
+			lecture.setIsEdit(true);
+			model.addAttribute("lecture", lecture);
+			return new ModelAndView("admin/lecture/addOrEdit", model);
 		}
-		model.addAttribute("message", "Student không tồn tại");
-		return new ModelAndView("redirect:/admin/student", model);
+		model.addAttribute("message", "lecture không tồn tại");
+		return new ModelAndView("redirect:/admin/lecture", model);
 
 	}
 
@@ -83,44 +83,44 @@ public class StudentController {
 	}
 
 	@PostMapping("saveofUpdate")
-	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("student") StudentModel student,
+	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("lecture") LectureModel lecture,
 			BindingResult result) throws FileNotFoundException, IOException {
-		File file = convertToFile(student.getImageFile());
-		Student entity = new Student();
+		File file = convertToFile(lecture.getImageFile());
+		Lecture entity = new Lecture();
 
 		/*
 		 * if (result.hasErrors()) { model.addAttribute("message", "Có lỗi"); return new
-		 * ModelAndView("admin/student/addOrEdit"); }
+		 * ModelAndView("admin/lecture/addOrEdit"); }
 		 */
-		if (!student.getImageFile().isEmpty()) {
+		if (!lecture.getImageFile().isEmpty()) {
 			try {
-				student.setImage(AWSS3.getInstance().uploadFile(student.getImageFile().getOriginalFilename(),
+				lecture.setImage(AWSS3.getInstance().uploadFile(lecture.getImageFile().getOriginalFilename(),
 						Files.newInputStream(file.toPath())));
-				student.setImageFile(null);
+				lecture.setImageFile(null);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		BeanUtils.copyProperties(student, entity);
-		studentservice.save(entity);
-		return new ModelAndView("redirect:/admin/student", model);
+		BeanUtils.copyProperties(lecture, entity);
+		lectureservice.save(entity);
+		return new ModelAndView("redirect:/admin/lecture", model);
 	}
 
 	@GetMapping("search")
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name) {
-		Iterable<Student> list = null;
+		Iterable<Lecture> list = null;
 		if (StringUtils.hasText(name))
-			list = studentservice.findByNameContaining(name);
+			list = lectureservice.findByNameContaining(name);
 		else
-			list = studentservice.findAll();
+			list = lectureservice.findAll();
 
-		model.addAttribute("students", list);
-		return "admin/student/search";
+		model.addAttribute("lectures", list);
+		return "admin/lecture/search";
 	}
 
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") String id) {
-		studentservice.deleteById(id);
-		return new ModelAndView("redirect:/admin/student", model);
+		lectureservice.deleteById(id);
+		return new ModelAndView("redirect:/admin/lecture", model);
 	}
 }

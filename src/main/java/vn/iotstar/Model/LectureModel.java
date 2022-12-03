@@ -1,9 +1,11 @@
 package vn.iotstar.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class LectureModel {
+	private String id;
 	private String username;
 	private String facultyId;
-	private String facultyName;
 	private String name;
 	private String dob;
 	private String address;
@@ -11,6 +13,7 @@ public class LectureModel {
 	private String phone;
 	private String image;
 	private int deleted;
+	private MultipartFile imageFile;
 	private Boolean isEdit = false;
 
 	public String getFacultyId() {
@@ -19,14 +22,6 @@ public class LectureModel {
 
 	public void setFacultyId(String facultyId) {
 		this.facultyId = facultyId;
-	}
-
-	public String getFacultyName() {
-		return facultyName;
-	}
-
-	public void setFacultyName(String facultyName) {
-		this.facultyName = facultyName;
 	}
 
 	public String getName() {
@@ -99,6 +94,22 @@ public class LectureModel {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

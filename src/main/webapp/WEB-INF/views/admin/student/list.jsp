@@ -13,52 +13,40 @@
 				<th>Họ tên</th>
 				<th>Ảnh đại diện</th>
 				<th>Ngày sinh</th>
-				<th>Email</th>
-				<th>Chuyên ngành</th>
+				<th>Địa chỉ</th>
+				<th>Giới tính</th>
+				<th>Điện thoại</th>
+				<th>Lớp</th>
+				<th>Khoa</th>
 				<th>Trạng thái</th>
 				<th>Hành động</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="item" items="${students.content}">
+			<c:forEach var="item" items="${students}">
 				<tr class="odd gradeX">
 					<td>${item.mssv}</td>
 					<td>${item.name}</td>
-					<td><c:url value="/images/${item.image}" var="imgUrl"></c:url>
-						<img width="100px" height="100px" name="imageFile" src="${imgUrl}"></td>
-					<td>${item.dateofbirth}</td>
-					<td>${item.email}</td>
-					<td>${item.faculty}</td>
-					<td><c:if test="${item.is_active == true}">
+					<td><c:url value="${item.image}" var="imgUrl"></c:url> <img
+						width="100px" height="100px"src="${imgUrl}"></td>
+					<td>${item.dob}</td>
+					<td>${item.address}</td>
+					<td>${item.gender}</td>
+					<td>${item.phone}</td>
+					<td>${item.facultyId}</td>
+					<td>${item.studentClassId}</td>
+					<td><c:if test="${item.deleted == 1}">
 							<span class="label label-sm label-success"> Hoạt động </span>
-						</c:if> <c:if test="${item.is_active ==false}">
+						</c:if> <c:if test="${item.deleted ==0}">
 							<span class="label label-sm label-warning"> Khóa</span>
 						</c:if></td>
-					<td><a
-						href="<c:url value='/admin/student/edit/${item.mssv}'/>"
+					<td><a href="<c:url value='/admin/student/edit/${item.id}'/>"
 						class="center">Edit</a> | <a
-						href="<c:url value='/admin/student/delete/${item.mssv}'/>"
+						href="<c:url value='/admin/student/delete/${item.id}'/>"
 						class="center">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<div class="d-flex justify-content-center" style="width: 100%;">
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:if test="${students.number>0}">
-					<li class="page-item"><a class="page-link"
-						href="/admin/student?p=${students.number-1}">Previous</a></li>
-				</c:if>
-				<c:forEach begin="1" end="${students.totalPages-1}" var="i">
-					<li class="page-item ${students.number==i? 'active':'' }"><a
-						class="page-link" href="/admin/student?p=${i}">${i}</a></li>
-				</c:forEach>
-				<c:if test="${students.number < (students.totalPages-1)}">
-					<li class="page-item"><a class="page-link"
-						href="/admin/student?p=${students.number + 1}">Next</a></li>
-				</c:if>
-			</ul>
-		</nav>
-	</div>
+	<a href="<c:url value='/admin/student/add'/>" class="center">Add</a>
 </div>

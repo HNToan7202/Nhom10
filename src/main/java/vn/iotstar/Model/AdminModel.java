@@ -1,11 +1,14 @@
 package vn.iotstar.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdminModel {
 	private String username;
 	private String name;
 	private String phone;
 	private String image;
 	private int deleted;
+	private MultipartFile imageFile;
 	private Boolean isEdit = false;
 	
 	public String getName() {
@@ -43,6 +46,12 @@ public class AdminModel {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
 	
 }
