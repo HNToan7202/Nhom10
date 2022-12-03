@@ -10,12 +10,9 @@ public class HomeController {
 	@GetMapping
 	public String Home()
 	{
-		return "Hell0";
+		return "redirect:/login";
 	}
-	@GetMapping("/CreateAllTable")
-	public void CreateTable() {
-		
-	}
+
 	
 	
 }

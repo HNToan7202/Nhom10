@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
@@ -194,9 +194,9 @@
 
 
 		<div class="inputGroup inputGroup1">
-			<label for="loginEmail" id="loginEmailLabel">Email</label> <input
-				type="email" id="loginEmail" name="email" maxlength="254" />
-			<p class="helper helper1" style="margin: 0;">email@domain.com</p>
+			<label for="loginEmail" id="loginEmailLabel">Username</label> <input
+				type="text" id="loginEmail" name="username" maxlength="254" />
+			<p class="helper helper1" style="margin: 0;">username</p>
 			<p >${message}</p>
 		</div>
 		<div class="inputGroup inputGroup2">
@@ -217,22 +217,22 @@
 <script type="text/javascript" src="/resources/js/demologin.js"></script>
 
 </html>
+ --%>
 
 
 
-
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <div>
-<h1>${message}</h1>
-	<form:form action="/login" method="POST" modelAttribute="account"
+	<h1>${message}</h1>
+	<form:form action="/login" method="POST" modelAttribute="user"
 		enctype="multipart/form-data">
 	
-	email: <form:input path="email" />
+	username: <form:input path="username" />
 		<br />
 	password <form:input path="password" />
 		<br />
 		<button>Save</button>
 	</form:form>
-</div> --%>
+</div>

@@ -17,8 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AWSS3 {
 	private static final String BUCKET = "studentm1";
-	private static final String REGION = "us-east-1";
-	private static final String url = "https://" + BUCKET + ".s3." + REGION + "amazonaws.com/";
+	private static final String url = "https://" + BUCKET + ".s3."  + "amazonaws.com/";
 	private static AWSS3 instance = null;
 
 	public static AWSS3 getInstance() {

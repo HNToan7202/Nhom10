@@ -1,8 +1,8 @@
+
 package vn.iotstar.Lamda;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.Collections;
 
 import org.springframework.stereotype.Controller;
@@ -20,11 +20,23 @@ import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 
 import vn.iotstar.Config.AWSDynamoDB;
 import vn.iotstar.Config.AWSS3;
-import vn.iotstar.utils.UserUtils;
 
 @Controller
 @RequestMapping("database")
 public class CreateAllTable {
+
+	@GetMapping("/creategrade")
+	public String Grade(ModelMap model) {
+		String message = null;
+		try {
+			InitialGrade();
+			message = "Create database success";
+		} catch (Exception e) {
+			message = e.getMessage();
+		}
+		model.addAttribute("message", message);
+		return "admin/data/create";
+	}
 
 	@GetMapping("/create")
 	public String create(ModelMap model) {
@@ -32,13 +44,13 @@ public class CreateAllTable {
 		try {
 			StudentCreator();
 			SubjectCreator();
-			SubjectGroupCreator();
 			FacultyCreator();
 			GradeCreator();
 			LectureCreator();
 			StudentClassCreator();
 			RoleCreator();
 			UserCreator();
+			AdminCreator();
 			InitialData();
 			message = "Create database success";
 		} catch (Exception e) {
@@ -76,9 +88,9 @@ public class CreateAllTable {
 		System.out.println("Subject table created successfully");
 	}
 
-	private void SubjectGroupCreator() {
+	private void AdminCreator() {
 		try {
-			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("subject_group",
+			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("admin",
 					Collections.singletonList(new KeySchemaElement("id", KeyType.HASH)),
 					Collections.singletonList(new AttributeDefinition("id", ScalarAttributeType.S)),
 					new ProvisionedThroughput(10L, 10L));
@@ -87,7 +99,7 @@ public class CreateAllTable {
 			System.err.println(e.getMessage());
 			return;
 		}
-		System.out.println("Subject group table created successfully");
+		System.out.println("Admin table created successfully");
 	}
 
 	private void FacultyCreator() {
@@ -107,9 +119,8 @@ public class CreateAllTable {
 	private void GradeCreator() {
 		try {
 			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("grade",
-					Arrays.asList(new KeySchemaElement("id", KeyType.HASH), new KeySchemaElement("id", KeyType.RANGE)),
-					Arrays.asList(new AttributeDefinition("mssv", ScalarAttributeType.S),
-							new AttributeDefinition("subjectGroupId", ScalarAttributeType.S)),
+					Collections.singletonList(new KeySchemaElement("id", KeyType.HASH)),
+					Collections.singletonList(new AttributeDefinition("id", ScalarAttributeType.S)),
 					new ProvisionedThroughput(10L, 10L));
 			table.waitForActive();
 		} catch (Exception e) {
@@ -135,7 +146,7 @@ public class CreateAllTable {
 
 	private void StudentClassCreator() {
 		try {
-			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("student_class",
+			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("studentclass",
 					Collections.singletonList(new KeySchemaElement("id", KeyType.HASH)),
 					Collections.singletonList(new AttributeDefinition("id", ScalarAttributeType.S)),
 					new ProvisionedThroughput(10L, 10L));
@@ -164,8 +175,8 @@ public class CreateAllTable {
 	private void UserCreator() {
 		try {
 			Table table = AWSDynamoDB.getInstance().getDynamoDB().createTable("user",
-					Collections.singletonList(new KeySchemaElement("username", KeyType.HASH)),
-					Collections.singletonList(new AttributeDefinition("username", ScalarAttributeType.S)),
+					Collections.singletonList(new KeySchemaElement("id", KeyType.HASH)),
+					Collections.singletonList(new AttributeDefinition("id", ScalarAttributeType.S)),
 					new ProvisionedThroughput(10L, 10L));
 			table.waitForActive();
 		} catch (Exception e) {
@@ -175,28 +186,57 @@ public class CreateAllTable {
 		System.out.println("Student table created successfully");
 	}
 
-	private void InitialData() {
-		Table table = AWSDynamoDB.getInstance().getDynamoDB().getTable("faculty");
+	private void InitialGrade() {
+		Table table = AWSDynamoDB.getInstance().getDynamoDB().getTable("grade");
 		try {
 
-			Item item = new Item().withPrimaryKey("id", "1").withString("name", "Công nghệ thông tin")
-					.withString("deleted", "0");
+			Item item = new Item().withPrimaryKey("id", "FIT").withInt("mssv", 20110650).withFloat("grade", (float) 5.5)
+					.withString("subjectId", "ad").withInt("deleted", 0);
 			table.putItem(item);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return;
 		}
+	}
+
+	private void InitialData() {
+		Table table = AWSDynamoDB.getInstance().getDynamoDB().getTable("faculty");
+		try {
+
+			Item item = new Item().withPrimaryKey("id", "FIT").withString("name", "Công nghệ thông tin")
+					.withInt("deleted", 0);
+			table.putItem(item);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("admin");
+		try {
+
+			Item item = new Item().withPrimaryKey("id", "1").withString("username", "admin01")
+					.withString("name", "Nguyễn Công Danh").withString("phone", "0354964840")
+					.withString("image",
+							AWSS3.getInstance().uploadFile("Admin.jpg",
+									Files.newInputStream(new File("D:\\Finally Project Cloud\\admin.jpg").toPath())))
+					.withInt("deleted", 0);
+			table.putItem(item);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+
 		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("lecture");
 		try {
 
-			Item item = new Item().withPrimaryKey("id", "1")
+			Item item = new Item().withPrimaryKey("id", "1").withString("username", "lecture01")
 					.withString("name", "Ngô Diệp Quang Huy").withString("facultyId", "FIT")
-					.withString("address", "TP Thủ Đức").withString("gender", "Nam").withString("phone", "0354964840")
+					.withString("address", "TP Thủ Đức").withString("dob", "05/10/2002").withString("gender", "Nam")
+					.withString("phone", "0354964840")
 					.withString("image",
 							AWSS3.getInstance().uploadFile("LectureQuangHuy.jpg",
 									Files.newInputStream(
 											new File("D:\\Finally Project Cloud\\DienThoai.jpg").toPath())))
-					.withString("deleted", "0");
+					.withInt("deleted", 0);
 			table.putItem(item);
 
 		} catch (Exception e) {
@@ -206,13 +246,11 @@ public class CreateAllTable {
 		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("user");
 		try {
 
-			Item item = new Item().withPrimaryKey("username", "admin")
-					.withString("password", UserUtils.hashPassword("admin")).withString("roleid", "1")
-					.withString("deleted", "0");
+			Item item = new Item().withPrimaryKey("id", "1").withString("username", "admin01")
+					.withString("password", "admin").withString("roleid", "admin").withInt("deleted", 0);
 			table.putItem(item);
-			item = new Item().withPrimaryKey("username", "student")
-					.withString("password", UserUtils.hashPassword("student")).withString("roleid", "2")
-					.withString("deleted", "0");
+			item = new Item().withPrimaryKey("id", "2").withString("username", "lecture01")
+					.withString("password", "lecture").withString("roleid", "lecture").withInt("deleted", 0);
 			table.putItem(item);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -221,11 +259,49 @@ public class CreateAllTable {
 		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("role");
 		try {
 
-			Item item = new Item().withPrimaryKey("id", "1").withString("name", "Admin")
-					.withString("deleted", "0");
+			Item item = new Item().withPrimaryKey("id", "admin").withString("name", "Admin").withInt("deleted", 0);
 			table.putItem(item);
-			item = new Item().withPrimaryKey("id", "2").withString("name", "Student")
-					.withString("deleted", "0");
+			item = new Item().withPrimaryKey("id", "lecture").withString("name", "Lecture").withInt("deleted", 0);
+			table.putItem(item);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("student");
+		try {
+
+			Item item = new Item().withPrimaryKey("id", "1").withString("mssv", "20110650")
+					.withString("studentClassId", "201101C").withString("name", "Ngô Diệp Quang Huy")
+					.withString("dob", "05/10/2002")
+					.withString("image",
+							AWSS3.getInstance().uploadFile("LectureQuangHuy.jpg",
+									Files.newInputStream(
+											new File("D:\\Finally Project Cloud\\DienThoai.jpg").toPath())))
+					.withString("address", "TP Thủ Đức").withString("gender", "Nam").withString("phone", "0354964840")
+
+					.withInt("deleted", 0).withString("facultyId", "FIT");
+			table.putItem(item);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("studentclass");
+		try {
+
+			Item item = new Item().withPrimaryKey("id", "201101C").withString("name", "Công nghệ thông tin 1")
+					.withString("facultyId", "FIT").withInt("deleted", 0);
+			table.putItem(item);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		table = AWSDynamoDB.getInstance().getDynamoDB().getTable("subject");
+		try {
+
+			Item item = new Item().withPrimaryKey("id", "SE").withString("name", "Công nghệ phần mềm")
+					.withInt("credits", 3).withInt("deleted", 0);
 			table.putItem(item);
 
 		} catch (Exception e) {

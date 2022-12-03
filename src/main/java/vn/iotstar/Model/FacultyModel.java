@@ -1,10 +1,12 @@
 package vn.iotstar.Model;
 
 public class FacultyModel {
-    private int id;
+	
+	
+    private String id;
     private String name;
     private int deleted;
-
+    private Boolean isEdit = false;
     public int getDeleted() {
         return deleted;
     }
@@ -21,12 +23,20 @@ public class FacultyModel {
 		this.name = name;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Boolean getIsEdit() {
+		return isEdit;
+	}
+
+	public void setIsEdit(Boolean isEdit) {
+		this.isEdit = isEdit;
 	}
   
 }

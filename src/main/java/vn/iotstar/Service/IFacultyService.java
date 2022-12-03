@@ -1,19 +1,35 @@
 package vn.iotstar.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 import vn.iotstar.Entity.Faculty;
 
 public interface IFacultyService {
 
-	String updateFaculty(String facultyId, Faculty faculty);
+	void deleteAll();
 
-	String deleteFacultyById(String facultyId);
+	void deleteAll(Iterable<? extends Faculty> entities);
 
-	List<Faculty> findAll();
+	void deleteAllById(Iterable<? extends String> ids);
 
-	Faculty getFacultyId(String facultyId);
+	void delete(Faculty entity);
 
-	Faculty saveFaculty(Faculty faculty);
+	void deleteById(String id);
+
+	long count();
+
+	Iterable<Faculty> findAllById(Iterable<String> ids);
+
+	Iterable<Faculty> findAll();
+
+	boolean existsById(String id);
+
+	Optional<Faculty> findById(String id);
+
+	<S extends Faculty> Iterable<S> saveAll(Iterable<S> entities);
+
+	<S extends Faculty> S save(S entity);
+
+	Iterable<Faculty> findByNameContaining(String name);
 
 }

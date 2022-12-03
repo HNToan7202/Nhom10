@@ -2,7 +2,6 @@
 package vn.iotstar.Config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -10,7 +9,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 
-@Configuration
 public class AWSDynamoDB {
 	private static AWSDynamoDB instance = null;
 	private static final AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
@@ -34,7 +32,6 @@ public class AWSDynamoDB {
 
 	}
 
-	@Bean
 	public DynamoDB getDynamoDB() {
 		if (dynamoDB == null)
 			dynamoDB = new DynamoDB(client);
