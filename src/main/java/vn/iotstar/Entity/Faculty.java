@@ -58,4 +58,8 @@ public class Faculty implements Serializable {
 		this.deleted = deleted;
 	}
 
+	public Faculty() {
+		super();
+	}
+
 }

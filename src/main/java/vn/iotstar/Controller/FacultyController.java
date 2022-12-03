@@ -40,7 +40,6 @@ public class FacultyController {
 		model.addAttribute("faculties", faculties);
 		return "admin/faculty/list";
 	}
-
 	@GetMapping("add")
 	public String add(Model model) {
 		FacultyModel faculty = new FacultyModel();
@@ -48,7 +47,7 @@ public class FacultyController {
 		model.addAttribute("faculty", faculty);
 		return "admin/faculty/addOrEdit";
 	}
-
+	
 	@GetMapping("edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
 		Optional<Faculty> opt = facultyService.findById(id);

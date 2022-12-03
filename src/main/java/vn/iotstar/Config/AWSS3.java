@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AWSS3 {
-	private static final String BUCKET = "studentm1";
+	private static final String BUCKET = "cloudm2";
 	private static final String url = "https://" + BUCKET + ".s3."  + "amazonaws.com/";
 	private static AWSS3 instance = null;
 
@@ -25,7 +25,6 @@ public class AWSS3 {
 			instance = new AWSS3();
 		return instance;
 	}
-
 	public String uploadFile(String fileName, InputStream inputStream) {
 		S3Client client = S3Client.builder().build();
 
@@ -37,9 +36,7 @@ public class AWSS3 {
 		}
 		S3Waiter waiter = client.waiter();
 		HeadObjectRequest waitRequest = HeadObjectRequest.builder().bucket(BUCKET).key(fileName).build();
-
 		WaiterResponse<HeadObjectResponse> waitResponse = waiter.waitUntilObjectExists(waitRequest);
-
 		return url + fileName;
 	}
 }
