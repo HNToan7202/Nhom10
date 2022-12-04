@@ -1,5 +1,6 @@
 package vn.iotstar.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import vn.iotstar.Entity.Lecture;
@@ -32,6 +33,6 @@ public interface ILectureService {
 
 	Iterable<Lecture> findByNameContaining(String name);
 
-	Iterable<Lecture> findByUsername(String username);
+	List<Lecture> findByUsername(String username);
 
 }

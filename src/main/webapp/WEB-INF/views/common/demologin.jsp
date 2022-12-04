@@ -223,16 +223,24 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
-<div>
-	<h1>${message}</h1>
-	<form:form action="/login" method="POST" modelAttribute="user"
-		enctype="multipart/form-data">
-	
-	username: <form:input path="username" />
-		<br />
-	password <form:input path="password" />
-		<br />
-		<button>Save</button>
-	</form:form>
-</div>
+<%@include file="/common/taglib.jsp"%><h2>${message}</h2>
+<form action="<c:url value="/login"/>" method="post"
+	enctype="multipart/form-data">
+	<br />
+	<div class="form-group">
+		<label for="UserID">Mã số sinh viên:</label> <input type="text"
+			name="username" value="${student.mssv}" id="username" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label for="categoryName">Họ và tên:</label> <input type="text"
+			class="form-control" name="password" id="password" value="${student.name}" />
+	</div>
+	<br />
+	<hr>
+	<div class="form-group">
+		<button class="btn green">
+			Save <i class="fa fa-plus"></i>
+		</button>
+
+	</div>
+</form>

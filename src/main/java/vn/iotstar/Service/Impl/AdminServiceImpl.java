@@ -1,5 +1,6 @@
 package vn.iotstar.Service.Impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import vn.iotstar.Reponsitories.IAdminRepository;
 import vn.iotstar.Service.IAdminService;
 
 @Service
-public class AdminServiceImpl implements IAdminService{
+public class AdminServiceImpl implements IAdminService {
 
 	@Autowired
 	IAdminRepository adminRepo;
@@ -66,6 +67,11 @@ public class AdminServiceImpl implements IAdminService{
 	}
 
 	@Override
+	public Iterable<Admin> findByNameContaining(String name) {
+		return adminRepo.findByNameContaining(name);
+	}
+
+	@Override
 	public void deleteAll(Iterable<? extends Admin> entities) {
 		adminRepo.deleteAll(entities);
 	}
@@ -74,5 +80,11 @@ public class AdminServiceImpl implements IAdminService{
 	public void deleteAll() {
 		adminRepo.deleteAll();
 	}
-	
+
+	@Override
+	public List<Admin> findByUsername(String username) {
+
+		return adminRepo.findByUsername(username);
+	}
+
 }

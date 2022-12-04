@@ -1,5 +1,6 @@
 package vn.iotstar.Service.Impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,7 @@ public class LectureServiceImpl implements ILectureService {
 		lectureRepo.deleteAll();
 	}
 	@Override
-	public Iterable<Lecture> findByUsername(String username) {
+	public List<Lecture> findByUsername(String username) {
 		return lectureRepo.findByUsername(username);
 	}
 	

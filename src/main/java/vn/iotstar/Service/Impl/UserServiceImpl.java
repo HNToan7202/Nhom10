@@ -1,11 +1,11 @@
 package vn.iotstar.Service.Impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.User;
 import vn.iotstar.Reponsitories.IUserRepository;
 import vn.iotstar.Service.IUserService;
@@ -80,5 +80,20 @@ public class UserServiceImpl implements IUserService {
 	public Iterable<User> findByUsernameContaining(String username) {
 		return userRepo.findByUsernameContaining(username);
 	}
-	
+
+	@Override
+	public List<User> findByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
+
+	@Override
+	public User login(String username, String password) {
+		List<User> optExist = findByUsername(username);
+
+		if (optExist.size() > 0 && optExist.get(0).getPassword().equals(password)) {
+			return optExist.get(0);
+		}
+		return null;
+	}
+
 }
