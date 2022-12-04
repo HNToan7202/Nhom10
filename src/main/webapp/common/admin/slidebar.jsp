@@ -1,105 +1,160 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>
- <div id="wrapper">
- 	 <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Trang Admin <sup></sup></div>
-            </a>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
+	<ul class="sidebar-nav" id="sidebar-nav">
 
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="/admin/home"> <i class="bi bi-grid"></i> <span>Trang
+					Chủ</span>
+		</a></li>
+		<!-- End Dashboard Nav -->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+		<li class="nav-item"><a class="nav-link "
+			data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>Sinh Viên</span><i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="components-nav" class="nav-content collapse show"
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/student/add"> <i class="bi bi-circle"></i><span>Thêm
+							Sinh Viên</span>
+				</a></li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Thêm Tài Khoản
-            </div>
+				<li><a href="/admin/student"> <i class="bi bi-circle"></i><span>Danh
+							Sách Sinh Viên</span>
+				</a></li>
+				<li><a href="components-badges.html"> <i
+						class="bi bi-circle"></i><span>Badges</span>
+				</a></li>
+				<li><a href="components-breadcrumbs.html"> <i
+						class="bi bi-circle"></i><span>Breadcrumbs</span>
+				</a></li>
+				<li><a href="components-buttons.html"> <i
+						class="bi bi-circle"></i><span>Buttons</span>
+				</a></li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Loại tài khoản</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Dành cho:</h6>
-                        <a class="collapse-item" href="/admin/addGV">Giảng viên</a>
-                        <a class="collapse-item" href="/admin/addST">Sinh Viên</a>
-                    </div>
-                </div>
-            </li>
+			</ul></li>
+		<!-- End Components Nav -->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i
+				class="bi bi-journal-text"></i><span>Giảng Viên</span><i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="forms-nav" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/lecture/add"> <i class="bi bi-circle"></i><span>
+							Thêm Giảng Viên</span>
+				</a></li>
+				<li><a href="/admin/lecture"> <i class="bi bi-circle"></i><span>
+							Danh Sách Giảng Viên </span>
+				</a></li>
+				<li><a href="forms-editors.html"> <i class="bi bi-circle"></i><span>Form
+							Editors</span>
+				</a></li>
+				<li><a href="forms-validation.html"> <i
+						class="bi bi-circle"></i><span>Form Validation</span>
+				</a></li>
+			</ul></li>
+		<!-- End Forms Nav -->
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Quản lý tài khoản
-            </div>
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-layout-text-window-reverse"></i><span>Quản Lý
+					Điểm</span><i class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="tables-nav" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/grade"> <i class="bi bi-circle"></i><span>
+							Danh Sách Điểm</span>
+				</a></li>
+				<li><a href="tables-data.html"> <i class="bi bi-circle"></i><span>Nhập
+							Điểm</span>
+				</a></li>
+			</ul></li>
+		<!-- End Tables Nav -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Danh sách</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Xem</h6>
-                        <a class="collapse-item" href="/admin/test/listGV">Giảng Viên</a>
-                        <a class="collapse-item" href="/admin/student">Sinh Viên</a>
-                        <a class="collapse-item" href="/admin/studentclass">Lớp Học</a>
-                        <a class="collapse-item" href="/admin/subject">Môn Học</a>
-                        <a class="collapse-item" href="/admin/grade">Xem Điểm</a>
-                        <a class="collapse-item" href="/admin/faculty">Chuyên Ngành</a>
-                    </div>
-                </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Đề tài
-            </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/test/listTGDK">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Mở đăng ký</span></a>
-            </li>
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-bar-chart"></i><span>Lớp Học</span><i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="charts-nav" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/studentclass"> <i class="bi bi-circle"></i><span>Danh
+							Sách Lớp</span>
+				</a></li>
+				<li><a href="charts-apexcharts.html"> <i
+						class="bi bi-circle"></i><span>Thêm Lớp Học</span>
+				</a></li>
+				<li><a href="charts-echarts.html"> <i class="bi bi-circle"></i><span>ECharts</span>
+				</a></li>
+			</ul></li>
+		<!-- End Charts Nav -->
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Phân chia đề tài</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Thông báo
-            </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="/notification/admin">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Quản lý thông báo</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"> <i
+				class="bi bi-gem"></i><span>Môn Học</span><i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="icons-nav" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/subject"> <i class="bi bi-circle"></i><span>
+							Danh Sách Môn</span>
+				</a></li>
+				<li><a href="/admin/subject/add"> <i class="bi bi-circle"></i><span>Thêm
+							Môn Học</span>
+				</a></li>
+				<li><a href="icons-boxicons.html"> <i class="bi bi-circle"></i><span>Boxicons</span>
+				</a></li>
+			</ul></li>
+		<!-- End Icons Nav -->
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"> <i
+				class="bi bi-card-list"></i><span>Khoa</span><i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="icons-nav" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/faculty"> <i class="bi bi-circle"></i><span>
+							Xem Danh Sách Cách Khoa</span>
+				</a></li>
+				<li><a href="/admin/faculty/add"> <i class="bi bi-circle"></i><span>Thêm
+							Khoa</span>
+				</a></li>
+				<li><a href="icons-boxicons.html"> <i class="bi bi-circle"></i><span>Boxicons</span>
+				</a></li>
+			</ul></li>
+		<!-- End Icons Nav -->
 
-        </ul>
-        <!-- End of Sidebar -->
+		<li class="nav-heading">Pages</li>
+
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="users-profile.html"> <i class="bi bi-person"></i> <span>Profile</span>
+		</a></li>
+		<!-- End Profile Page Nav -->
+
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="pages-faq.html"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span>
+		</a></li>
+		<!-- End F.A.Q Page Nav -->
+
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="pages-contact.html"> <i class="bi bi-envelope"></i> <span>Contact</span>
+		</a></li>
+		<!-- End Register Page Nav -->
+
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="pages-login.html"> <i class="bi bi-box-arrow-in-right"></i>
+				<span>Login</span>
+		</a></li>
+		<!-- End Login Page Nav -->
+
+	</ul>
+
+</aside>
+<!-- End Sidebar-->

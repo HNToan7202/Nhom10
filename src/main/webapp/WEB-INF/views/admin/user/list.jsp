@@ -33,8 +33,4 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div>
-		<a href="<c:url value='/admin/user/add'/>"
-			class="center">ADD</a>
-	</div>
 </div>

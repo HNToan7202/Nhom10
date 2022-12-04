@@ -27,13 +27,6 @@ public class AdminController {
 	@Autowired
 	IAdminService adminService;
 
-	@GetMapping("/home")
-	public String admin(ModelMap model, HttpSession sesson) {
-
-		return "admin/home";
-
-	}
-
 	@RequestMapping("addGV")
 	public String addGV(Model model) {
 		return "admin/lecture/add";
@@ -43,5 +36,10 @@ public class AdminController {
 	public String addST(Model model) {
 		return "admin/student/add";
 	}
-	
+
+	@RequestMapping("contact")
+	public String contact(Model model) {
+		return "admin/contact";
+	}
+
 }
