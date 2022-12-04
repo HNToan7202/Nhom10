@@ -50,7 +50,7 @@ public class GradeController {
 		GradeModel grade = new GradeModel();
 		grade.setIsEdit(false);
 		model.addAttribute("grade", grade);
-		return "admin/	/addOrEdit";
+		return "admin/grade/addOrEdit";
 	}
 
 	@GetMapping("edit/{id}")

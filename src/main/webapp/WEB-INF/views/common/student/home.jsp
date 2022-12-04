@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@ include file="/common/taglib.jsp"%>
+<%@include file="/common/taglib.jsp"%>
 
 <div id="main">
 	<td background="images/bg_title.gif">
@@ -24,9 +23,9 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Name</th>
-					<th scope="col">Start Date</th>
+					<th scope="col">STT</th>
+					<th scope="col">Thông Báo</th>
+					<th scope="col">Ngày Tạo</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,6 +56,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</div> 
+	</div>
+
 
 </div>

@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Admin;
@@ -47,13 +48,9 @@ public class LoginController {
 		return "/common/demologin";
 	}
 
+	// Login vào hệ thống lấy username hiển thị pro5
 	@PostMapping("login")
 	public ModelAndView login(ModelMap model, @Valid @ModelAttribute("user") UserModel user, BindingResult result) {
-
-		/*
-		 * if (result.hasErrors()) { model.addAttribute("message", "loi"); return new
-		 * ModelAndView("common/demologin", model); }
-		 */
 
 		User users = userService.login(user.getUsername(), user.getPassword());
 
@@ -81,8 +78,13 @@ public class LoginController {
 				model.addAttribute("message", "Chưa có thông tin tài khoản trong hệ thống.");
 				return new ModelAndView("common/demologin", model);
 			}
-
 		}
+		
+	}
+	@RequestMapping("logout")
+	public String logout(HttpSession sesson) {
+		sesson.removeAttribute("username");
+		return "/common/demologin";
 	}
 
 }

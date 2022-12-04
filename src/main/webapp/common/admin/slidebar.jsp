@@ -10,34 +10,25 @@
 			href="/admin/home"> <i class="bi bi-grid"></i> <span>Trang
 					Chủ</span>
 		</a></li>
-		<!-- End Dashboard Nav -->
 
-		<li class="nav-item"><a class="nav-link "
+
+		<li class="nav-item"><a class="nav-link collapsed"
 			data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
 				<i class="bi bi-menu-button-wide"></i><span>Sinh Viên</span><i
 				class="bi bi-chevron-down ms-auto"></i>
 		</a>
-			<ul id="components-nav" class="nav-content collapse show"
+			<ul id="components-nav" class="nav-content collapse "
 				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/student"> <i class="bi bi-circle"></i><span>Danh
+							Sách Sinh Viên</span>
+				</a></li>
 				<li><a href="/admin/student/add"> <i class="bi bi-circle"></i><span>Thêm
 							Sinh Viên</span>
 				</a></li>
 
-				<li><a href="/admin/student"> <i class="bi bi-circle"></i><span>Danh
-							Sách Sinh Viên</span>
-				</a></li>
-				<li><a href="components-badges.html"> <i
-						class="bi bi-circle"></i><span>Badges</span>
-				</a></li>
-				<li><a href="components-breadcrumbs.html"> <i
-						class="bi bi-circle"></i><span>Breadcrumbs</span>
-				</a></li>
-				<li><a href="components-buttons.html"> <i
-						class="bi bi-circle"></i><span>Buttons</span>
-				</a></li>
-
 			</ul></li>
 		<!-- End Components Nav -->
+
 
 		<li class="nav-item"><a class="nav-link collapsed"
 			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i
@@ -52,12 +43,7 @@
 				<li><a href="/admin/lecture"> <i class="bi bi-circle"></i><span>
 							Danh Sách Giảng Viên </span>
 				</a></li>
-				<li><a href="forms-editors.html"> <i class="bi bi-circle"></i><span>Form
-							Editors</span>
-				</a></li>
-				<li><a href="forms-validation.html"> <i
-						class="bi bi-circle"></i><span>Form Validation</span>
-				</a></li>
+
 			</ul></li>
 		<!-- End Forms Nav -->
 
@@ -71,7 +57,7 @@
 				<li><a href="/admin/grade"> <i class="bi bi-circle"></i><span>
 							Danh Sách Điểm</span>
 				</a></li>
-				<li><a href="tables-data.html"> <i class="bi bi-circle"></i><span>Nhập
+				<li><a href="/admin/grade/add"> <i class="bi bi-circle"></i><span>Nhập
 							Điểm</span>
 				</a></li>
 			</ul></li>
@@ -90,8 +76,6 @@
 				<li><a href="charts-apexcharts.html"> <i
 						class="bi bi-circle"></i><span>Thêm Lớp Học</span>
 				</a></li>
-				<li><a href="charts-echarts.html"> <i class="bi bi-circle"></i><span>ECharts</span>
-				</a></li>
 			</ul></li>
 		<!-- End Charts Nav -->
 
@@ -108,49 +92,44 @@
 				<li><a href="/admin/subject/add"> <i class="bi bi-circle"></i><span>Thêm
 							Môn Học</span>
 				</a></li>
-				<li><a href="icons-boxicons.html"> <i class="bi bi-circle"></i><span>Boxicons</span>
-				</a></li>
 			</ul></li>
 		<!-- End Icons Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"> <i
-				class="bi bi-card-list"></i><span>Khoa</span><i
+			data-bs-target="#icons-nav1" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-card-list"></i><span>Chuyên Ngành</span><i
 				class="bi bi-chevron-down ms-auto"></i>
 		</a>
-			<ul id="icons-nav" class="nav-content collapse "
+			<ul id="icons-nav1" class="nav-content collapse "
 				data-bs-parent="#sidebar-nav">
-				<li><a href="/admin/faculty"> <i class="bi bi-circle"></i><span>
-							Xem Danh Sách Cách Khoa</span>
+				<li><a href="/admin/faculty"> <i class="bi bi-circle"></i><span>Danh
+							Sách Chuyên Ngành </span>
 				</a></li>
-				<li><a href="/admin/faculty/add"> <i class="bi bi-circle"></i><span>Thêm
-							Khoa</span>
-				</a></li>
-				<li><a href="icons-boxicons.html"> <i class="bi bi-circle"></i><span>Boxicons</span>
-				</a></li>
+				<li><a href="/admin/faculty/add"> <i class="bi bi-circle"></i><span>
+							Thêm Chuyên Ngành</span>
+				</a>
 			</ul></li>
-		<!-- End Icons Nav -->
 
 		<li class="nav-heading">Pages</li>
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			href="users-profile.html"> <i class="bi bi-person"></i> <span>Profile</span>
+			href="/admin/profile"> <i class="bi bi-person"></i> <span>Profile</span>
 		</a></li>
 		<!-- End Profile Page Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			href="pages-faq.html"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span>
+			href="/admin/error"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span>
 		</a></li>
 		<!-- End F.A.Q Page Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			href="pages-contact.html"> <i class="bi bi-envelope"></i> <span>Contact</span>
+			href="/admin/contact"> <i class="bi bi-envelope"></i> <span>Liên
+					Hệ</span>
 		</a></li>
 		<!-- End Register Page Nav -->
 
-		<li class="nav-item"><a class="nav-link collapsed"
-			href="pages-login.html"> <i class="bi bi-box-arrow-in-right"></i>
-				<span>Login</span>
+		<li class="nav-item"><a class="nav-link collapsed" href="/logout">
+				<i class="bi bi-box-arrow-in-right"></i> <span>Login Out</span>
 		</a></li>
 		<!-- End Login Page Nav -->
 
