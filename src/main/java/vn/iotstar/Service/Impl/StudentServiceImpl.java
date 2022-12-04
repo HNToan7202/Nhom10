@@ -1,5 +1,6 @@
 package vn.iotstar.Service.Impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,8 @@ import vn.iotstar.Reponsitories.IStudentRepository;
 import vn.iotstar.Service.IStudentService;
 
 @Service
-public class StudentServiceImpl implements IStudentService{
+public class StudentServiceImpl implements IStudentService {
 
-	
 	@Autowired
 	IStudentRepository studentRepo;
 
@@ -80,5 +80,11 @@ public class StudentServiceImpl implements IStudentService{
 	public void deleteAll() {
 		studentRepo.deleteAll();
 	}
-	
+
+	@Override
+	public List<Student> findByUsername(String username) {
+
+		return studentRepo.findByUsername(username);
+	}
+
 }

@@ -28,6 +28,11 @@
 											class="form-control" />
 									</div>
 									<div class="form-group">
+										<label for="UserID">Tên đăng nhập:</label> <input type="text"
+											name="username" value="${student.username}"
+											id="username" class="form-control" />
+									</div>
+									<div class="form-group">
 										<label for="UserID">Mã số sinh viên:</label> <input
 											type="text" name="mssv" value="${student.mssv}" id="mssv"
 											class="form-control" />
@@ -44,10 +49,10 @@
 									</div>
 									<div class="form-group">
 										<label for="images">Images:</label> <input type="file"
-											class="form-control" name="imageFile" id="imageFile"  />
+											class="form-control" name="imageFile" id="imageFile" />
 									</div>
 									<input type="text" class="form-control" name="image" id="image"
-										value="${student.image}" hidden="true"/>
+										value="${student.image}" hidden="true" />
 									<div class="form-group">
 										<label for="email">Địa chỉ sinh viên:</label> <input
 											type="text" class="form-control" name="address" id="address"

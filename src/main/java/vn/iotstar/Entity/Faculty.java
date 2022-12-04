@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @DynamoDBTable(tableName = "faculty")
 public class Faculty implements Serializable {

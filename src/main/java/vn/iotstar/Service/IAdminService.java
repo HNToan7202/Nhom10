@@ -1,5 +1,6 @@
 package vn.iotstar.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import vn.iotstar.Entity.Admin;
@@ -30,5 +31,7 @@ public interface IAdminService {
 
 	<S extends Admin> S save(S entity);
 
+	List<Admin> findByUsername(String username);
 
+	Iterable<Admin> findByNameContaining(String name);
 }
