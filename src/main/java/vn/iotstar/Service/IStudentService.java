@@ -1,5 +1,6 @@
 package vn.iotstar.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import vn.iotstar.Entity.Student;
@@ -32,4 +33,5 @@ public interface IStudentService {
 
 	Iterable<Student> findByNameContaining(String name);
 
+	List<Student> findByUsername(String username);
 }

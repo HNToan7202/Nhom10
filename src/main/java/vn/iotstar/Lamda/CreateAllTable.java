@@ -273,8 +273,8 @@ public class CreateAllTable {
 		try {
 
 			Item item = new Item().withPrimaryKey("id", "1").withString("mssv", "20110650")
-					.withString("studentClassId", "201101C").withString("name", "Ngô Diệp Quang Huy")
-					.withString("dob", "05/10/2002")
+					.withString("username", "quanghuy1").withString("studentClassId", "201101C")
+					.withString("name", "Ngô Diệp Quang Huy").withString("dob", "05/10/2002")
 					.withString("image",
 							AWSS3.getInstance().uploadFile("LectureQuangHuy.jpg",
 									Files.newInputStream(

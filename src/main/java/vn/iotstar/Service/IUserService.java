@@ -1,5 +1,6 @@
 package vn.iotstar.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import vn.iotstar.Entity.User;
@@ -31,6 +32,11 @@ public interface IUserService {
 	<S extends User> S save(S entity);
 
 	Iterable<User> findByUsernameContaining(String username);
+
+	List<User> findByUsername(String username);
+
+	User login(String email, String password);
+
 
 
 
