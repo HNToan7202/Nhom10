@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @DynamoDBTable(tableName = "faculty")
 public class Faculty implements Serializable {
@@ -56,6 +55,10 @@ public class Faculty implements Serializable {
 
 	public void setDeleted(int deleted) {
 		this.deleted = deleted;
+	}
+
+	public Faculty() {
+		super();
 	}
 
 }

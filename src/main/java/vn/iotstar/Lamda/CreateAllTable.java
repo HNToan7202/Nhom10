@@ -51,6 +51,7 @@ public class CreateAllTable {
 			RoleCreator();
 			UserCreator();
 			AdminCreator();
+			InitialGrade();
 			InitialData();
 			message = "Create database success";
 		} catch (Exception e) {
@@ -217,7 +218,7 @@ public class CreateAllTable {
 					.withString("name", "Nguyễn Công Danh").withString("phone", "0354964840")
 					.withString("image",
 							AWSS3.getInstance().uploadFile("Admin.jpg",
-									Files.newInputStream(new File("D:\\Finally Project Cloud\\admin.jpg").toPath())))
+									Files.newInputStream(new File("/Users/nguyenhoangtoan/N3/cloud/Final_Project/avt1.jpg").toPath())))
 					.withInt("deleted", 0);
 			table.putItem(item);
 		} catch (Exception e) {
@@ -235,7 +236,7 @@ public class CreateAllTable {
 					.withString("image",
 							AWSS3.getInstance().uploadFile("LectureQuangHuy.jpg",
 									Files.newInputStream(
-											new File("D:\\Finally Project Cloud\\DienThoai.jpg").toPath())))
+											new File("/Users/nguyenhoangtoan/N3/cloud/Final_Project/avt2.jpeg").toPath())))
 					.withInt("deleted", 0);
 			table.putItem(item);
 
@@ -277,7 +278,7 @@ public class CreateAllTable {
 					.withString("image",
 							AWSS3.getInstance().uploadFile("LectureQuangHuy.jpg",
 									Files.newInputStream(
-											new File("D:\\Finally Project Cloud\\DienThoai.jpg").toPath())))
+											new File("/Users/nguyenhoangtoan/N3/cloud/Final_Project/avt2.jpeg").toPath())))
 					.withString("address", "TP Thủ Đức").withString("gender", "Nam").withString("phone", "0354964840")
 
 					.withInt("deleted", 0).withString("facultyId", "FIT");
