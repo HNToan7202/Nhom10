@@ -5,11 +5,12 @@
 *Thay đổi thông tin cá nhân, đổi mật khẩu
 
 * Phân quyền :Admin,Stdent
-* Admin: Quản lý sinh viên
-     ** Quản lý giảng viên
-     ** Quản lý khoa
-     ** Quản lý Lớp học
-     ** Quản lý môn học
+* Admin: 
+** Quản lý sinh viên
+** Quản lý giảng viên
+** Quản lý khoa
+** Quản lý Lớp học
+** Quản lý môn học
 
 ## Công nghệ sử dụng
 * Client: Html, Css3, Bootstrap, JS
