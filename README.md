@@ -3,15 +3,13 @@
 * Đăng nhập, đăng xuất khỏi hệ thống
 * Thống kê điểm của từng sinh viên
 *Thay đổi thông tin cá nhân, đổi mật khẩu
-
-* Phân quyền :Admin,Stdent
-* Admin: 
-** Quản lý sinh viên
-** Quản lý giảng viên
-** Quản lý khoa
-** Quản lý Lớp học
-** Quản lý môn học
-
+* Phân quyền :Admin
+* Quản lý sinh viên
+* Quản lý giảng viên
+* Quản lý khoa
+* Quản lý Lớp học
+* Quản lý môn học
+* Phân quyền Student
 ## Công nghệ sử dụng
 * Client: Html, Css3, Bootstrap, JS
 * Server: Java(Spring boot), AWS Lambda, AWS SQS, AWS EC2,AWS DynamoDB, AWS S3
