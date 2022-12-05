@@ -3,8 +3,11 @@ package vn.iotstar.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import vn.iotstar.Entity.User;
 
+@Component
 public interface IUserService {
 
 	void deleteAll();
@@ -36,8 +39,5 @@ public interface IUserService {
 	List<User> findByUsername(String username);
 
 	User login(String email, String password);
-
-
-
 
 }

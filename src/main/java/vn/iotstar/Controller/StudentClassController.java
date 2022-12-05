@@ -1,9 +1,11 @@
 package vn.iotstar.Controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -21,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.StudentClass;
 import vn.iotstar.Model.StudentClassModel;
+import vn.iotstar.Service.IAdminService;
 import vn.iotstar.Service.IStudentClassService;
 
 @Controller
@@ -32,17 +36,30 @@ public class StudentClassController {
 	IStudentClassService studentclassService;
 
 	@Autowired
+	IAdminService adminService;
+
+	@Autowired
 	ServletContext application;
 
 	@GetMapping("")
-	public String getAllGrade(ModelMap model) {
+	public String getAllGrade(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		Iterable<StudentClass> studentclasses = studentclassService.findAll();
 		model.addAttribute("studentclasses", studentclasses);
 		return "admin/studentclass/list";
 	}
 
 	@GetMapping("add")
-	public String add(Model model) {
+	public String add(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		StudentClassModel StudentClass = new StudentClassModel();
 		StudentClass.setIsEdit(false);
 		model.addAttribute("studentclass", StudentClass);
@@ -95,5 +112,12 @@ public class StudentClassController {
 	public ModelAndView delete(ModelMap model, @PathVariable("id") String id) {
 		studentclassService.deleteById(id);
 		return new ModelAndView("redirect:/admin/studentclass", model);
+	}
+
+	@GetMapping("/")
+	public String getAllStudent(ModelMap model) {
+		Iterable<StudentClass> studentclasses = studentclassService.findAll();
+		model.addAttribute("studentclasses", studentclasses);
+		return "admin/studentclass/list";
 	}
 }

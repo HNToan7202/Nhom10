@@ -2,8 +2,10 @@ package vn.iotstar.Service;
 
 import java.util.Optional;
 
-import vn.iotstar.Entity.Grade;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.Grade;
+@Component
 public interface IGradeService {
 
 	void deleteAll();

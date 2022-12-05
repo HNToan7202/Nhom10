@@ -1,4 +1,4 @@
-package vn.iotstar.Config;
+package vn.iotstar.configuration;
 
 import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;

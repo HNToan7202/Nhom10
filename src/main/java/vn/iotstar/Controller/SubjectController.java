@@ -2,9 +2,11 @@
 package vn.iotstar.Controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.Subject;
 import vn.iotstar.Model.SubjectModel;
+import vn.iotstar.Service.IAdminService;
 import vn.iotstar.Service.ISubjectService;
 
 @Controller
@@ -37,15 +41,28 @@ public class SubjectController {
 	@Autowired
 	ServletContext application;
 
+	@Autowired
+	IAdminService adminService;
+
 	@GetMapping("")
-	public String getAllGrade(ModelMap model) {
+	public String getAllGrade(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		Iterable<Subject> subjects = subjectService.findAll();
 		model.addAttribute("subjects", subjects);
 		return "admin/subject/list";
 	}
 
 	@GetMapping("add")
-	public String add(Model model) {
+	public String add(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		SubjectModel subject = new SubjectModel();
 		subject.setIsEdit(false);
 		model.addAttribute("subject", subject);

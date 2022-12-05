@@ -40,9 +40,9 @@
 								<span class="label label-sm label-warning"> Khóa</span>
 							</c:if></td>
 						<td><a href="<c:url value='/admin/lecture/edit/${item.id}'/>"
-							class="center">Edit</a> | <a
+							class="btn btn-warning">Edit</a> | <a
 							href="<c:url value='/admin/lecture/delete/${item.id}'/>"
-							class="center">Delete</a></td>
+							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

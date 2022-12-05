@@ -22,13 +22,13 @@ public class HomeController {
 	IAdminService adminService;
 
 	@GetMapping
-	public String Home(ModelMap model, HttpSession session) {
-
-		String username = (String) session.getAttribute("username");
-		List<Admin> admin = adminService.findByUsername(username);
-		if (admin.size() > 0) {
-			model.addAttribute("admin", admin.get(0));
-		}
+	public String Home(ModelMap model) {
+//
+//		String username = (String) session.getAttribute("username");
+//		List<Admin> admin = adminService.findByUsername(username);
+//		if (admin.size() > 0) {
+//			model.addAttribute("admin", admin.get(0));
+//		}
 		return "common/demologin";
 	}
 

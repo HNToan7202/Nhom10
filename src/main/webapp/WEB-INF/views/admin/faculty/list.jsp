@@ -23,9 +23,9 @@
 						<td>${item.name}</td>
 						<td>${item.deleted ==1?"Đang hoạt động" :"Tạm ngừng"}</td>
 						<td><a href="<c:url value='/admin/faculty/edit/${item.id}'/>"
-							class="center">Edit</a> | <a
+							class="btn btn-warning">Edit</a>  <a
 							href="<c:url value='/admin/faculty/delete/${item.id}'/>"
-							class="center">Delete</a></td>
+							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

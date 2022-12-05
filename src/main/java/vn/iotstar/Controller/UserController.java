@@ -1,9 +1,11 @@
 package vn.iotstar.Controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -21,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.User;
 import vn.iotstar.Model.UserModel;
+import vn.iotstar.Service.IAdminService;
 import vn.iotstar.Service.IUserService;
 
 @Controller
@@ -33,9 +37,17 @@ public class UserController {
 
 	@Autowired
 	ServletContext application;
+	
+	@Autowired
+	IAdminService adminService;
 
 	@GetMapping("")
-	public String getAllGrade(ModelMap model) {
+	public String getAllGrade(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		Iterable<User> user = userService.findAll();
 		model.addAttribute("users", user);
 		return "admin/user/list";

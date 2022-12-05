@@ -110,16 +110,16 @@
 				</a>
 			</ul></li>
 
-		<li class="nav-heading">Pages</li>
+		<li class="nav-heading">Trang</li>
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			href="/admin/profile"> <i class="bi bi-person"></i> <span>Profile</span>
+			href="/admin/profile"> <i class="bi bi-person"></i> <span>Thông Tin Cá Nhân</span>
 		</a></li>
 		<!-- End Profile Page Nav -->
 
-		<li class="nav-item"><a class="nav-link collapsed"
+<!-- 		<li class="nav-item"><a class="nav-link collapsed"
 			href="/admin/error"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span>
-		</a></li>
+		</a></li> -->
 		<!-- End F.A.Q Page Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"

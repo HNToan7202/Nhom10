@@ -46,11 +46,18 @@
 									</c:if> <c:if test="${item.deleted ==0}">
 										<span class="label label-sm label-warning"> Khóa</span>
 									</c:if></td>
-								<td><a
+								<td><a style="margin: auto;"
 									href="<c:url value='/admin/student/edit/${item.id}'/>"
-									class="center">Edit</a> | <a
+									type="button" class="btn btn-warning"> Revise </a> <a
 									href="<c:url value='/admin/student/delete/${item.id}'/>"
-									class="center">Delete</a></td>
+									type="button" class="btn btn-danger"> Delete </a> <%-- 						<a
+									href="<c:url value='/admin/student/edit/${item.id}'/>"
+									class="center">Edit</a> 
+									
+									
+									| <a
+									href="<c:url value='/admin/student/delete/${item.id}'/>"
+									class="center">Delete</a> --%></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -60,3 +67,11 @@
 		</section>
 	</div>
 </main>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+<!-- <button type="button" class="btn btn-danger">
+	<i class="bi bi-exclamation-octagon"></i>
+</button> -->

@@ -7,9 +7,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -28,10 +30,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.iotstar.Config.AWSS3;
+import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.Lecture;
 import vn.iotstar.Model.LectureModel;
+import vn.iotstar.Service.IAdminService;
 import vn.iotstar.Service.ILectureService;
+import vn.iotstar.configuration.AWSS3;
 
 @Controller
 @RequestMapping("admin/lecture")
@@ -40,22 +44,36 @@ public class LectureController {
 	ILectureService lectureservice;
 
 	@Autowired
+	IAdminService adminService;
+
+	@Autowired
 	ServletContext application;
 
 	@GetMapping("")
-	public String getAllGrade(ModelMap model) {
+	public String getAllGrade(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		Iterable<Lecture> lectures = lectureservice.findAll();
 		model.addAttribute("lectures", lectures);
 		return "admin/lecture/list";
 	}
 
 	@GetMapping("add")
-	public String add(Model model) {
+	public String add(ModelMap model, HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		List<Admin> admin = adminService.findByUsername(username);
+		if (admin.size() > 0) {
+			model.addAttribute("admin", admin.get(0));
+		}
 		LectureModel lecture = new LectureModel();
 		lecture.setIsEdit(false);
 		model.addAttribute("lecture", lecture);
 		return "admin/lecture/addOrEdit";
 	}
+
 	@GetMapping("edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
 		Optional<Lecture> opt = lectureservice.findById(id);

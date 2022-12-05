@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 
-import vn.iotstar.Config.AWSDynamoDB;
+import vn.iotstar.configuration.AWSDynamoDB;
 
 @Controller
 

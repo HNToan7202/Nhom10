@@ -1,19 +1,32 @@
 package vn.iotstar.Model;
 
-public class FacultyModel {
-	
-	
-    private String id;
-    private String name;
-    private int deleted;
-    private Boolean isEdit = false;
-    public int getDeleted() {
-        return deleted;
-    }
+import org.springframework.web.multipart.MultipartFile;
 
-    public void setDeleted(int deleted) {
-        this.deleted = deleted;
-    }
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+@JacksonStdImpl
+public class FacultyModel {
+
+	private String id;
+	private String name;
+	private int deleted;
+	private Boolean isEdit = false;
+
+	public int getDeleted() {
+		return deleted;
+	}
+
+	public FacultyModel() {
+		super();
+	}
+
+	public void setDeleted(int deleted) {
+		this.deleted = deleted;
+	}
 
 	public String getName() {
 		return name;
@@ -38,5 +51,13 @@ public class FacultyModel {
 	public void setIsEdit(Boolean isEdit) {
 		this.isEdit = isEdit;
 	}
-  
+
+	public FacultyModel(String id, String name, int deleted, Boolean isEdit) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.deleted = deleted;
+		this.isEdit = isEdit;
+	}
+
 }

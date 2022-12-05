@@ -32,8 +32,8 @@
 								<span class="label label-sm label-warning"> Khóa</span>
 							</c:if></td>
 						<td><a href="<c:url value='/admin/edit/${item.id}'/>"
-							class="center">Edit</a> | <a
-							href="<c:url value='/admin/delete/${item.id}'/>" class="center">Delete</a></td>
+							class="btn btn-warning">Edit</a>  <a
+							href="<c:url value='/admin/delete/${item.id}'/>" class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

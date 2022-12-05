@@ -3,8 +3,11 @@ package vn.iotstar.Service;
 import java.util.List;
 import java.util.Optional;
 
-import vn.iotstar.Entity.Admin;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.Admin;
+import vn.iotstar.Model.AdminModel;
+@Component
 public interface IAdminService {
 
 	void deleteAll();
@@ -21,7 +24,7 @@ public interface IAdminService {
 
 	Iterable<Admin> findAllById(Iterable<String> ids);
 
-	Iterable<Admin> findAll();
+	List<AdminModel> retreiveAll();
 
 	boolean existsById(String id);
 
@@ -34,4 +37,6 @@ public interface IAdminService {
 	List<Admin> findByUsername(String username);
 
 	Iterable<Admin> findByNameContaining(String name);
+
+	Iterable<Admin> findAll();
 }

@@ -1,5 +1,5 @@
 
-package vn.iotstar.Config;
+package vn.iotstar.configuration;
 
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.core.waiters.WaiterResponse;
