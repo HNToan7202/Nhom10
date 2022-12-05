@@ -2,7 +2,7 @@
 ## Các tính năng chính :
 * Đăng nhập, đăng xuất khỏi hệ thống
 * Thống kê điểm của từng sinh viên
-*Thay đổi thông tin cá nhân, đổi mật khẩu
+* Thay đổi thông tin cá nhân, đổi mật khẩu
 * Phân quyền :Admin
 * Quản lý sinh viên
 * Quản lý giảng viên
