@@ -53,14 +53,4 @@ public class AdminController {
 		return "/admin/home";
 	}
 
-	@RequestMapping("error")
-	public String chart(ModelMap model, HttpSession session) {
-		String username = (String) session.getAttribute("username");
-		List<Admin> admin = adminService.findByUsername(username);
-		if (admin.size() > 0) {
-			model.addAttribute("admin", admin.get(0));
-		}
-		return "/error";
-	}
-
 }

@@ -27,7 +27,7 @@
 		<!-- End F.A.Q Page Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			href="/student/account"> <i class="bi bi-envelope"></i> <span>Tài
+			href="/student/my"> <i class="bi bi-envelope"></i> <span>Tài
 					Khoản Sinh Viên</span>
 		</a></li>
 		<!-- End Contact Page Nav -->

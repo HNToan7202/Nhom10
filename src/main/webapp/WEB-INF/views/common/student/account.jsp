@@ -44,15 +44,6 @@
 			</div>
 		</div>
 
-		<!-- 		<div class="row mb-3">
-			<label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter
-				New Password</label>
-			<div class="col-md-7 col-lg-8">
-				<input name="renewpassword" type="password" class="form-control"
-					id="renewpassword">
-			</div>
-		</div> -->
-
 		<div class="text-center">
 			<button type="submit" class="btn btn-primary">Change
 				Password</button>

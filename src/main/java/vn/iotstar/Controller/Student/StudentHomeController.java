@@ -132,7 +132,7 @@ public class StudentHomeController {
 		return new ModelAndView("redirect:/student/profile", model);
 	}
 
-	@GetMapping("account")
+	@GetMapping("my")
 	public String getAllAccount(ModelMap model, HttpSession session) {
 		String username = (String) session.getAttribute("username");
 		List<Student> student = studentService.findByUsername(username);
@@ -184,5 +184,15 @@ public class StudentHomeController {
 		userService.save(acc);
 		model.addAttribute("message", "Mật khẩu đã được cập nhật");
 		return new ModelAndView("common/student/profile", model);
+	}
+
+	@GetMapping("account")
+	public String AccountStudent(ModelMap model, HttpSession sesson) {
+		String username = (String) sesson.getValue("username");
+		List<Student> studententity = studentService.findByUsername(username);
+		StudentModel student = new StudentModel();
+		BeanUtils.copyProperties(studententity.get(0), student);
+		model.addAttribute("user", student);
+		return "common/student/account";
 	}
 }
