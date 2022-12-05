@@ -31,7 +31,7 @@ Lần 1:
 ## Mục tiêu và hướng phát triển
 * Tiếp tục hoàn thiện các chức năng còn thiếu.
 * Xây dựng và quản lý nguồn dữ liệu lớn hơn .
-* Tìm hiểu và sử dụng SQS và Lamda
+* sử dụng SQS và Lamda để Rest API
 * Đánh giá chi phí sử dụng trên AWS
 
 ## Thành viên tham gia Project
