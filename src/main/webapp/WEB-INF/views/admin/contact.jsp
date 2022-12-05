@@ -31,7 +31,7 @@
 				</div>
 				<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
 					<div class="member">
-						<img src="/assets/img/20110650.jpg"
+						<img src="/assets/img/2011065.jpg"
 							style="width: 200px; height: 200px; border-radius: 50%;"
 							class="img-fluid" alt="">
 						<div class="member-content">

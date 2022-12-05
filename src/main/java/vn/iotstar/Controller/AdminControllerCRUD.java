@@ -102,7 +102,7 @@ public class AdminControllerCRUD {
 		}
 		BeanUtils.copyProperties(admin, entity);
 		adminservice.save(entity);
-		return new ModelAndView("redirect:/admin", model);
+		return new ModelAndView("redirect:/admin/profile", model);
 	}
 
 	@GetMapping("search")

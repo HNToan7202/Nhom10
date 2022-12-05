@@ -143,7 +143,7 @@ public class StudentHomeController {
 		model.addAttribute("admin", admin.get());
 		Iterable<Grade> grades = gradeService.findAll();
 		model.addAttribute("grades", grades);
-		return "common/student/account";
+		return "common/student/myaccount";
 	}
 
 	@RequestMapping("chart")
