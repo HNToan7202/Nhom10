@@ -1,4 +1,4 @@
-package vn.iotstar.Config;
+package vn.iotstar.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

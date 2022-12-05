@@ -2,8 +2,10 @@ package vn.iotstar.Service;
 
 import java.util.Optional;
 
-import vn.iotstar.Entity.Faculty;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.Faculty;
+@Component
 public interface IFacultyService {
 
 	void deleteAll();

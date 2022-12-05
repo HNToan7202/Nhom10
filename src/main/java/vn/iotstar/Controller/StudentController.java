@@ -28,10 +28,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.iotstar.Config.AWSS3;
 import vn.iotstar.Entity.Student;
 import vn.iotstar.Model.StudentModel;
 import vn.iotstar.Service.IStudentService;
+import vn.iotstar.configuration.AWSS3;
 
 @Controller
 @RequestMapping("admin/student")

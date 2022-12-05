@@ -3,8 +3,10 @@ package vn.iotstar.Service;
 import java.util.List;
 import java.util.Optional;
 
-import vn.iotstar.Entity.Lecture;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.Lecture;
+@Component
 public interface ILectureService {
 
 	void deleteAll();

@@ -18,8 +18,8 @@ import com.amazonaws.services.dynamodbv2.model.KeyType;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 
-import vn.iotstar.Config.AWSDynamoDB;
-import vn.iotstar.Config.AWSS3;
+import vn.iotstar.configuration.AWSDynamoDB;
+import vn.iotstar.configuration.AWSS3;
 
 @Controller
 @RequestMapping("database")

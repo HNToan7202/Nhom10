@@ -8,6 +8,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,11 +23,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.iotstar.Entity.Faculty;
 import vn.iotstar.Model.FacultyModel;
 import vn.iotstar.Service.IFacultyService;
+/*import vn.iotstar.Service.IFacultyService;*/
 
 @Controller
 @RequestMapping("admin/faculty")
@@ -35,11 +41,13 @@ public class FacultyController {
 	ServletContext application;
 
 	@GetMapping("")
+	@Cacheable(value = "faculties")
 	public String getAllGrade(ModelMap model) {
 		Iterable<Faculty> faculties = facultyService.findAll();
 		model.addAttribute("faculties", faculties);
 		return "admin/faculty/list";
 	}
+
 	@GetMapping("add")
 	public String add(Model model) {
 		FacultyModel faculty = new FacultyModel();
@@ -47,8 +55,9 @@ public class FacultyController {
 		model.addAttribute("faculty", faculty);
 		return "admin/faculty/addOrEdit";
 	}
-	
+
 	@GetMapping("edit/{id}")
+	@Cacheable(value = "faculty")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
 		Optional<Faculty> opt = facultyService.findById(id);
 		FacultyModel faculty = new FacultyModel();
@@ -64,6 +73,7 @@ public class FacultyController {
 
 	}
 
+	@Caching(put = { @CachePut(value = "faculty", key = "#faculty.id") }, evict = { @CacheEvict(value = "faculties") })
 	@PostMapping("saveofUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("faculty") FacultyModel faculty,
 			BindingResult result) {
@@ -77,7 +87,7 @@ public class FacultyController {
 		facultyService.save(entity);
 		return new ModelAndView("redirect:/admin/faculty", model);
 	}
-	
+
 	@GetMapping("search")
 	public String search(ModelMap model, @RequestParam(name = "name", required = false) String name) {
 		Iterable<Faculty> list = null;
@@ -89,10 +99,12 @@ public class FacultyController {
 		model.addAttribute("faculties", list);
 		return "admin/faculty/search";
 	}
-	
+
+	@Caching(evict = { @CacheEvict(value = "faculty", key = "#id"), @CacheEvict(value = "faculties") })
 	@GetMapping("delete/{id}")
 	public ModelAndView delete(ModelMap model, @PathVariable("id") String id) {
 		facultyService.deleteById(id);
 		return new ModelAndView("redirect:/admin/faculty", model);
 	}
+
 }

@@ -1,5 +1,14 @@
 package vn.iotstar.Model;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+
+import lombok.Builder;
+import lombok.Getter;
+@Getter
+@Builder
+@JacksonStdImpl
 public class StudentClassModel {
     private String id;
     private String name;
@@ -41,6 +50,19 @@ public class StudentClassModel {
 		return isEdit;
 	}
 	public void setIsEdit(Boolean isEdit) {
+		this.isEdit = isEdit;
+	}
+	public StudentClassModel() {
+		super();
+	}
+	public StudentClassModel(String id, String name, String facultyId, String facultyName, int deleted,
+			Boolean isEdit) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.facultyId = facultyId;
+		this.facultyName = facultyName;
+		this.deleted = deleted;
 		this.isEdit = isEdit;
 	}
 	

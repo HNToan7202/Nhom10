@@ -1,5 +1,5 @@
 
-package vn.iotstar.Config;
+package vn.iotstar.configuration;
 
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.core.waiters.WaiterResponse;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AWSS3 {
-	private static final String BUCKET = "cloudm2";
+	private static final String BUCKET = "studentm1";
 	private static final String url = "https://" + BUCKET + ".s3."  + "amazonaws.com/";
 	private static AWSS3 instance = null;
 

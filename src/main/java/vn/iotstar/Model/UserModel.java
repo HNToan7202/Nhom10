@@ -3,6 +3,15 @@ package vn.iotstar.Model;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+
+import lombok.Builder;
+import lombok.Getter;
+@Getter
+@Builder
+@JacksonStdImpl
 public class UserModel {
 	private String id;
 	@NotEmpty(message = "tên đăng nhập không được để trống")
@@ -62,4 +71,21 @@ public class UserModel {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public UserModel() {
+		super();
+	}
+
+	public UserModel(String id, @NotEmpty(message = "tên đăng nhập không được để trống") String username,
+			@NotEmpty(message = "Mật khẩu không được để trống") @Min(value = 6, message = "Password phải từ 6 ký tự trở lên") String password,
+			String roleid, int deleted, Boolean isEdit) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.roleid = roleid;
+		this.deleted = deleted;
+		this.isEdit = isEdit;
+	}
+	
 }

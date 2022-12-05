@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.iotstar.Config.AWSS3;
 import vn.iotstar.Entity.Admin;
 import vn.iotstar.Entity.Grade;
 import vn.iotstar.Entity.Student;
@@ -38,6 +37,7 @@ import vn.iotstar.Service.IAdminService;
 import vn.iotstar.Service.IGradeService;
 import vn.iotstar.Service.IStudentService;
 import vn.iotstar.Service.IUserService;
+import vn.iotstar.configuration.AWSS3;
 
 @Controller
 @RequestMapping("student")

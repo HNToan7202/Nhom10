@@ -2,8 +2,10 @@ package vn.iotstar.Service;
 
 import java.util.Optional;
 
-import vn.iotstar.Entity.StudentClass;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.StudentClass;
+@Component
 public interface IStudentClassService {
 
 	void deleteAll();
