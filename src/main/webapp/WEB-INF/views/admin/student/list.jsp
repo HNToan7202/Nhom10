@@ -13,6 +13,7 @@
 					id="sample_2">
 					<thead>
 						<tr>
+							<th>Tên Đăng Nhập</th>
 							<th>Mã số sinh viên</th>
 							<th>Họ tên</th>
 							<th>Ảnh đại diện</th>
@@ -29,13 +30,14 @@
 					<tbody>
 						<c:forEach var="item" items="${students}">
 							<tr class="odd gradeX">
+								<td>${item.username}</td>
 								<td>${item.mssv}</td>
 								<td>${item.name}</td>
 								<td><c:url value="${item.image}" var="imgUrl"></c:url> <img
 									width="100px" height="100px" src="${imgUrl}"></td>
 								<td>${item.dob}</td>
 								<td>${item.address}</td>
-								<td>${item.gender}</td>
+								<td>${item.gender == '1' ?'Nam':'Nữ'}</td>
 								<td>${item.phone}</td>
 								<td>${item.facultyId}</td>
 								<td>${item.studentClassId}</td>

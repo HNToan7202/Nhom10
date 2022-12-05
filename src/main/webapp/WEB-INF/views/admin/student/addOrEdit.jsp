@@ -24,13 +24,13 @@
 									method="post" enctype="multipart/form-data">
 									<br />
 									<div class="form-group">
-										<input type="text" name="id" value="${student.id}" id="id"
-											class="form-control" />
+										<label for="UserID">ID:</label> <input type="text" name="id"
+											value="${student.id}" id="id" class="form-control" />
 									</div>
 									<div class="form-group">
 										<label for="UserID">Tên đăng nhập:</label> <input type="text"
-											name="username" value="${student.username}"
-											id="username" class="form-control" />
+											name="username" value="${student.username}" id="username"
+											class="form-control" />
 									</div>
 									<div class="form-group">
 										<label for="UserID">Mã số sinh viên:</label> <input
@@ -91,8 +91,8 @@
 									</div>
 									<br />
 									<hr>
-									<div class="form-group">
-										<button class="btn green">
+									<div class="form-group text-center">
+										<button class="btn btn-info">
 											Save <i class="fa fa-plus"></i>
 										</button>
 

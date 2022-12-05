@@ -56,7 +56,6 @@ public class LectureController {
 		model.addAttribute("lecture", lecture);
 		return "admin/lecture/addOrEdit";
 	}
-
 	@GetMapping("edit/{id}")
 	public ModelAndView edit(ModelMap model, @PathVariable("id") String id) throws IOException {
 		Optional<Lecture> opt = lectureservice.findById(id);
