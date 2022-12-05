@@ -4,8 +4,8 @@
 * Thống kê điểm của từng sinh viên
 *Thay đổi thông tin cá nhân, đổi mật khẩu
 
-*Phân quyền :Admin,Stdent
-*Admin: Quản lý sinh viên
+* Phân quyền :Admin,Stdent
+* Admin: Quản lý sinh viên
      ** Quản lý giảng viên
      ** Quản lý khoa
      ** Quản lý Lớp học
