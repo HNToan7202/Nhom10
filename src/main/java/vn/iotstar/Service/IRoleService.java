@@ -2,8 +2,10 @@ package vn.iotstar.Service;
 
 import java.util.Optional;
 
-import vn.iotstar.Entity.Role;
+import org.springframework.stereotype.Component;
 
+import vn.iotstar.Entity.Role;
+@Component
 public interface IRoleService {
 
 	void deleteAll();

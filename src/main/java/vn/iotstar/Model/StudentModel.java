@@ -2,6 +2,13 @@ package vn.iotstar.Model;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+
+import lombok.Builder;
+import lombok.Getter;
+@Getter
+@Builder
+@JacksonStdImpl
 public class StudentModel {
 
 	private String id;
@@ -147,6 +154,32 @@ public class StudentModel {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public StudentModel() {
+		super();
+	}
+
+	public StudentModel(String id, String mssv, String username, String studentClassId, String studentClassName,
+			String name, String dob, String address, String gender, String phone, int deleted, String image,
+			String facultyId, String facultyName, MultipartFile imageFile, Boolean isEdit) {
+		super();
+		this.id = id;
+		this.mssv = mssv;
+		this.username = username;
+		this.studentClassId = studentClassId;
+		this.studentClassName = studentClassName;
+		this.name = name;
+		this.dob = dob;
+		this.address = address;
+		this.gender = gender;
+		this.phone = phone;
+		this.deleted = deleted;
+		this.image = image;
+		this.facultyId = facultyId;
+		this.facultyName = facultyName;
+		this.imageFile = imageFile;
+		this.isEdit = isEdit;
 	}
 
 }

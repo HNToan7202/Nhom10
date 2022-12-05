@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
@@ -13,6 +14,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -27,23 +29,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.iotstar.Config.AWSS3;
+import lombok.AllArgsConstructor;
 import vn.iotstar.Entity.Admin;
 import vn.iotstar.Model.AdminModel;
 import vn.iotstar.Service.IAdminService;
+import vn.iotstar.configuration.AWSS3;
 
 @Controller
 @RequestMapping("admin")
 public class AdminControllerCRUD {
+	
 	@Autowired
 	IAdminService adminservice;
-
+	
 	@Autowired
 	ServletContext application;
 
 	@GetMapping("")
 	public String getAllGrade(ModelMap model) {
-		Iterable<Admin> admins = adminservice.findAll();
+		List<AdminModel> admins = adminservice.retreiveAll();
 		model.addAttribute("admins", admins);
 		return "admin/adminCRUD/list";
 	}

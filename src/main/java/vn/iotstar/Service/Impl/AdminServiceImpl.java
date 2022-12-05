@@ -1,22 +1,31 @@
-package vn.iotstar.Service.Impl;
+ package vn.iotstar.Service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
 import vn.iotstar.Entity.Admin;
+import vn.iotstar.Model.AdminModel;
 import vn.iotstar.Reponsitories.IAdminRepository;
 import vn.iotstar.Service.IAdminService;
 
 @Service
+@AllArgsConstructor
 public class AdminServiceImpl implements IAdminService {
 
 	@Autowired
 	IAdminRepository adminRepo;
 
 	@Override
+	@Caching(evict = { @CacheEvict(value = "admin", allEntries = true) })
 	public <S extends Admin> S save(S entity) {
 		return adminRepo.save(entity);
 	}
@@ -27,6 +36,7 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
+	
 	public Optional<Admin> findById(String id) {
 		return adminRepo.findById(id);
 	}
@@ -36,9 +46,18 @@ public class AdminServiceImpl implements IAdminService {
 		return adminRepo.existsById(id);
 	}
 
-	@Override
-	public Iterable<Admin> findAll() {
-		return adminRepo.findAll();
+	public List<AdminModel> retreiveAll() {
+		Iterable<Admin> admin = adminRepo.findAll();
+
+		List<Admin> list = new ArrayList<Admin>();
+		for (Admin e : admin) {
+			list.add(e);
+		}
+		return list
+				.parallelStream().map(house -> AdminModel.builder().id(house.getId()).username(house.getUsername())
+						.name(house.getName()).phone(house.getPhone()).image(house.getImage()).build())
+				.collect(Collectors.toList());
+
 	}
 
 	@Override
@@ -85,6 +104,11 @@ public class AdminServiceImpl implements IAdminService {
 	public List<Admin> findByUsername(String username) {
 
 		return adminRepo.findByUsername(username);
+	}
+
+	@Override
+	public Iterable<Admin> findAll() {
+		return adminRepo.findAll();
 	}
 
 }

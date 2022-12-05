@@ -13,6 +13,5 @@ import vn.iotstar.Entity.Admin;
 @EnableScan
 public interface IAdminRepository extends CrudRepository<Admin, String> {
 	List<Admin> findByUsername(String username);
-
 	Iterable<Admin> findByNameContaining(String name);
 }
