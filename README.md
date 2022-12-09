@@ -26,7 +26,7 @@
 * Deloy Web lên EC2
 
 ## Video báo cáo của nhóm
-Lần 1: 
+Lần 1: https://youtu.be/C047uozBEgM
 
 ## Mục tiêu và hướng phát triển
 * Tiếp tục hoàn thiện các chức năng còn thiếu.
