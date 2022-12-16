@@ -22,14 +22,15 @@
 * Tìm hiểu về cơ sở lý thuyết của dịch vụ serverless
 * Tìm hiểu về các dịch vụ liên quan : WS Lambda, AWS SQS, AWS EC2,AWS DynamoDB, AWS S3
 * Thiết lập trang web quản lý sinh viên sử dụng database DynamoDB và kho lưu trữ tại S3
+* Sử dụng lamda function để thực hiện xử lý dữ liệu
 * Cache dữ liệu bằng Redis
 * Deloy Web lên EC2
 
 ## Video báo cáo của nhóm
-Lần 1: https://youtu.be/C047uozBEgM
-
+* Lần 1: https://youtu.be/0Ao8RkZtlGk
+* Lần 2: https://youtu.be/Bh2ul0efpkk
 ## Mục tiêu và hướng phát triển
-* Tiếp tục hoàn thiện các chức năng còn thiếu.
+* Thêm các chức năng phù hợp với thực tế
 * Xây dựng và quản lý nguồn dữ liệu lớn hơn .
 * sử dụng SQS và Lamda để Rest API
 * Đánh giá chi phí sử dụng trên AWS
